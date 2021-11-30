@@ -6,14 +6,14 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/11/26 15:06:15 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/11/30 18:47:55 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <unistd.h>
+# include <unistd.h>
 
 typedef struct node
 {
@@ -33,5 +33,8 @@ int	push_swap(int ac, char **av);
 int	ft_atoi(char *str);
 char	*ft_super_join(int ac, char **av);
 int	ft_super_len(int ac, char **av);
+
+# define ERROR = -1;
+# define OK = 0;
 
 #endif

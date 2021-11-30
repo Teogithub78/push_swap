@@ -315,8 +315,6 @@ int	ft_atoi_plus(node_t *list, char *str)
 	return (0);
 }
 
-
-
 int	*value_table_int(char **str)
 {
 	int	i;
@@ -377,6 +375,8 @@ int main(int ac, char **av)
 	i = ft_super_len(ac, av);
 	printf("TOTAL = |%i|\n", i);
 	str = ft_super_join(ac, av);
+	if (str == NULL)
+
 	if (ft_check(str) < 0)
 	{
 		//ft_putstr("ERROR");
@@ -384,7 +384,6 @@ int main(int ac, char **av)
 		return (-1);
 	}
 //	printf("|%s| AVANT SPLIT\n", str);
-
 	tab_split = ft_split(str, ' ');
 	if(tab_split == NULL)
 		return (NULL);
@@ -396,14 +395,14 @@ int main(int ac, char **av)
 		printf("\nTABLEAU = %s\n", tab_split[i]);
 		i++;
 	}
-
-
+/*
 	table_int = value_table_int(tab_split);
 	if (table_int == NULL)
 	{
 		ft_putstr("ERROR\n");
 		free (table_int);
 	}
+	*/
 	ft_free_all(tab_split);
 	write(1, "prout\n", 6);
 	free(str);

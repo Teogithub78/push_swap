@@ -13,15 +13,11 @@ SRC = ./src/ft_manage_addr.c \
 						./src/ft_manage_uint.c \
 						./src/ft_printf.c
 
-OBJ = ./src/ft_manage_addr.o \
-						./src/ft_manage_hexa.o \
-						./src/ft_manage_int.o \
-						./src/ft_manage_octal.o \
-						./src/ft_manage_schar.o \
-						./src/ft_manage_str.o \
-						./src/ft_manage_type.o \
-						./src/ft_manage_uint.o \
-						./src/ft_printf.o
+OBJ = $(SRC:.c=.o)
+
+FSANITIZE = -fsanitize=address
+
+G3 = -
 
 all : $(NAME)
 
@@ -42,7 +38,12 @@ $(NAME): message $(OBJ)
 		@echo "-------------------------"
 		@echo "		[	GENERATING libftprintf	]"
 		@echo "-------------------------"
-		ar -rcs $(NAME) $(OBJ)
+		$(NAME) $(OBJ)
+
+fs : $(OBJ)
+	$(CC) $(CFLAGS) $(FSANITIZE) -I$(PATH_INC) -c $< -o $@
+
+
 
 clean :
 		@echo "-------------------------"
