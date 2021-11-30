@@ -28,6 +28,9 @@ size_t			ft_splitstrlcpy(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[i] = '\0';
+	ft_putstr("DST == |");
+	ft_putstr(dst);
+	ft_putstr("|\n1");
 	return (i);
 }
 
@@ -100,7 +103,8 @@ char			**ft_fill_row(char **dst, char const *src, char c)
 			}
 		}
 	}
-	dst[row] = '\0';
+	printf("ROW =\t|%li|\n", row);
+	dst[row] = NULL;
 	return (dst);
 }
 
@@ -112,8 +116,7 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (0);
 	i = ft_count_words(s, c);
-	printf("\n count words =\t|%li|\n", i);
-	if (!(str = ((char **)malloc(sizeof(char *) * (i + 1)))))
+	if (!(str = malloc(sizeof(char *) * (i + 1))))
 		return (0);
 	return (ft_fill_row(str, s, c));
 }
@@ -289,33 +292,30 @@ char	*ft_super_join(int ac, char **av)
 	return (save);
 }
 
-int	*ft_atoi_plus(int *table, char **str, int i)
+int	ft_atoi_plus(node_t *list, char *str)
 {
 	long int li;
 	long int	retour;
+	int i;
 
+	i = 0;
 	retour = 0;
 
-	while(*str[i])
+	while(str[i])
 	{
-		retour += *str[i] - 48;
-		str[i]++;
-		if (*str[i])
+		retour += str[i++] - 48;
+		if (str[i++])
 			retour = retour * 10;
 	}
 	if (retour > 2147483647 || retour < -2147483648)
-	{
-		//free(table);
-		//free(str);
-		ft_putstr("ERROR");
-		return (NULL);
-	}
+		return (-1);
+
 	else
-		table[i] = (int)retour;
-
-
-	return (table);
+		list->val = (int)retour;
+	return (0);
 }
+
+
 
 int	*value_table_int(char **str)
 {
@@ -336,7 +336,7 @@ int	*value_table_int(char **str)
 	i = 0;
 	while(i < j)
 	{
-		table_int = ft_atoi_plus(table_int, str, i);
+		table_int[i] = ft_atoi_plus(table_int[i], str[i]);
 		if (table_int == NULL)
 		{
 			free(table_int);
@@ -349,22 +349,20 @@ int	*value_table_int(char **str)
 	return(table_int);
 }
 
-int	ft_free_all(char **tab_split, char *str)
+int	ft_free_all(char **tab_split)
 {
 	int	i;
 
 	i = 0;
-	if (str)
-		free(str);
-
-	while (tab_split[i])
+	while (tab_split[i] != NULL)
 	{
 		free(tab_split[i]);
 		i++;
+		printf("FREE tab_split dans tableau = \t|%i|\n", i);
 	}
-
-//	if (tab_int)
-//		free(tab_int);
+	//free(tab_split[i]);
+	free(tab_split);
+	//printf("FREE tab_split = \t|%i|\n", i);
 
 	return(0);
 }
@@ -374,6 +372,7 @@ int main(int ac, char **av)
 	char *str;
 	char **tab_split;
 	int i;
+	int		*table_int;
 
 	i = ft_super_len(ac, av);
 	printf("TOTAL = |%i|\n", i);
@@ -384,18 +383,29 @@ int main(int ac, char **av)
 		free(str);
 		return (-1);
 	}
-	printf("|%s| AVANT SPLIT\n", str);
+//	printf("|%s| AVANT SPLIT\n", str);
+
 	tab_split = ft_split(str, ' ');
-	printf("|%s| APRES SPLIT\n", str);
+	if(tab_split == NULL)
+		return (NULL);
+//	printf("|%s| APRES SPLIT\n", str);
 	i = 0;
 
 	while(tab_split[i] != NULL)
 	{
-		printf("TABLEAU = %s\n", tab_split[i]);
+		printf("\nTABLEAU = %s\n", tab_split[i]);
 		i++;
 	}
 
-	i = 0;
-	ft_free_all(tab_split, str);
+
+	table_int = value_table_int(tab_split);
+	if (table_int == NULL)
+	{
+		ft_putstr("ERROR\n");
+		free (table_int);
+	}
+	ft_free_all(tab_split);
+	write(1, "prout\n", 6);
+	free(str);
 	return (0);
 }
