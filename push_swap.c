@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 17:31:36 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:47:33 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ int	main(int ac, char **av)
 	list_a = manage_arg(ac, av);
 	if (list_a == NULL)
 		return (ft_print_ERROR);
+
+	list_b = list_init_b(list_b);
+	if (list_b == NULL)
+		return (ft_print_ERROR);
+
+
 
 
 
