@@ -395,14 +395,7 @@ int main(int ac, char **av)
 		printf("\nTABLEAU = %s\n", tab_split[i]);
 		i++;
 	}
-/*
-	table_int = value_table_int(tab_split);
-	if (table_int == NULL)
-	{
-		ft_putstr("ERROR\n");
-		free (table_int);
-	}
-	*/
+
 	ft_free_all(tab_split);
 	write(1, "prout\n", 6);
 	free(str);

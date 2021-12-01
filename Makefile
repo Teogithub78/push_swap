@@ -3,21 +3,17 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 PATH_SRC = ./src/
 PATH_INC = ./inc/
-SRC = ./src/ft_manage_addr.c \
-						./src/ft_manage_hexa.c \
+SRC = ./src/list_init.c \
+						./src/parser_propre.c \
 						./src/ft_manage_int.c \
 						./src/ft_manage_octal.c \
 						./src/ft_manage_schar.c \
-						./src/ft_manage_str.c \
-						./src/ft_manage_type.c \
-						./src/ft_manage_uint.c \
-						./src/ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
 FSANITIZE = -fsanitize=address
 
-G3 = -
+G3 = -g3
 
 all : $(NAME)
 
