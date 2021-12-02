@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:50:05 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 17:15:21 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:02:22 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (0);
 	i = ft_count_words(s, c);
-	printf("|%li| == nb de tab de split\n\n\n", i);
+	printf("\n|%li| == nb de tab de split\n\n\n", i);
 	if (!(str = (char **)malloc(sizeof(char *) * (i + 1))))
 		return (0);
 	return (ft_fill_row(str, s, c));
@@ -185,8 +185,10 @@ int	free_tab(char **tab)
 	while (tab[i])
 	{
 		free(tab[i]);
+		printf("tab[%i] qui est free \n", i);
 		i++;
 	}
+	free(tab);
 	return (0);
 }
 
