@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 18:10:43 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:52:09 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,19 @@ int	ft_print_ERROR()
 
 int	main(int ac, char **av)
 {
-	save_t *list_a;
-	save_t *list_b;
+	save_t list_a;
+	save_t list_b;
+
 	if (check_arg(ac, av) == ERROR)
-		return(ft_print_ERROR);
+		return(ft_print_ERROR());
 
-	list_a = manage_arg(ac, av);
-	if (list_a == NULL)
-		return (ft_print_ERROR);
+	if (manage_arg(ac, av, &list_a) == ERROR)
+		return (ft_print_ERROR());
 
-	list_b = list_init_b(list_b);
-	if (list_b == NULL)
-		return (ft_print_ERROR);
+	if (info_init(&list_b) == ERROR)
+		return (ft_print_ERROR());
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	free_list(&list_a);
+	free_list(&list_b);
+	return (0);
 }

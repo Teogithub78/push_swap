@@ -6,36 +6,50 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 16:28:28 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:50:41 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-save_t	*list_init_a(save_t *infos_a, node_t *stack_a)
+int	ft_print_lista(save_t *infos_a, node_t *stack_a)
+{
+	printf("\n*************INFOLIST A**************\n");
+	printf("HEAD DANS INFOS_A == \t|%p|\n", infos_a->head);
+	printf("TAIL DANS INFOS_A == \t|%p|\n", infos_a->tail);
+	printf("\n*************STACK A**************\n");
+	printf("ADDRESSE DE STACK A == \t|%p|\n", stack_a);
+	printf("NEXT DANS INFOS_A == \t|%p|\n", stack_a->next);
+	printf("PREV DANS INFOS_A == \t|%p|\n", stack_a->prev);
+
+	return(0);
+}
+
+int		list_init_a(save_t *infos_a, node_t *stack_a)
 {
 	infos_a = (save_t *)malloc(sizeof(save_t));
 	stack_a = (node_t *)malloc(sizeof(node_t));
 	if (!infos_a || !stack_a)
 	{
-		ft_putstr("Error\n");
+		printf("\nPROUT\n");
 		return (ERROR);
 	}
 	infos_a->head = stack_a;
 	infos_a->tail = stack_a;
 	stack_a->next = infos_a->head;
 	stack_a->prev = infos_a->tail;
-	return (infos_a);
+	ft_print_lista(infos_a, stack_a);
+	return (0);
 }
 
-save_t	*list_init_b(save_t *infos_b)
+int	info_init(save_t *infos)
 {
-	infos_b = (save_t *)malloc(sizeof(save_t));
-	if (!infos_b)
-		return (NULL);
-	infos_b->head = NULL;
-	infos_b->tail = NULL;
-	return(infos_b);
+	//infos = (save_t *)malloc(sizeof(save_t));
+//	if (!infos)
+//		return (ERROR);
+	infos->head = NULL;
+	infos->tail = NULL;
+	return(0);
 }
 
 int		list_add(save_t *infostack, char *str)
@@ -44,14 +58,34 @@ int		list_add(save_t *infostack, char *str)
 
 	new = (node_t *)malloc(sizeof(node_t));
 	if (!new)
-		return (NULL);
+		return (ERROR);
+	printf("CURRENT TAB SPLIT CONTENT LIST ADD = \t|%s|\n", str);
+
+
 	if (ft_atoi_plus(new, str) == ERROR)
-		return (-1);
+		return (ERROR);
+	if (infostack->head == NULL)
+	{
+		infostack->head = new;
+		infostack->tail = new;
+		new->next = infostack->head;
+		new->prev = infostack->tail;
+		ft_print_lista(infostack, new);
+		return(0);
+	}
+	printf("ATOI WORKED ?!  == |%i|\n\n", new->val);
+	//FAIRE INIT DE LIST CHAINEES
 	new->next = infostack->head;
+	printf("A\n");
 	new->prev = infostack->tail;
+	printf("B\n");
 	infostack->head->prev = new;
+	printf("C\n");
 	infostack->tail->next = new;
+	printf("D\n");
 	infostack->tail = new;
+	printf("list add WORKED ?!  == \n\n");
+
 	return(0);
 }
 
@@ -66,35 +100,43 @@ int	free_list(save_t *infos)
 		free(temp->prev);
 	}
 	free(temp);
-	free(infos);
-	return (OK);
+	//free(infos);
+	return (ERROR);
 }
 
-int		list_setup(char **tab_split)
+
+int		list_setup_a(char **tab_split, save_t *infos_a)
 {
-	node_t	*stack_a;
-	save_t	*infos_a;
 	int	i;
 
 	i = 0;
-	infos_a = list_init_a(infos_a, stack_a);
-	if (infos_a == NULL)
+	info_init(infos_a);
+/*
+	if (list_add(infos_a, tab_split[i]) == ERROR)
 		return(ERROR);
-	stack_a = infos_a->head;
-	if (ft_atoi_plus(stack_a, tab_split[i]))
+	printf("LIST INIT A == |OK|\n");
+	ft_print_lista(infos_a, &stack_a);
+	//&stack_a = infos_a->head;
+	if (ft_atoi_plus(&stack_a, tab_split[i]) == ERROR)
+	{
+		free_list(infos_a);
 		return (ERROR);
+	}
+	printf("first ATOI PLUS == |OK|\n");
+
 	i++;
 
+	printf("TAB_SPLIT BEFORE LIST_ADD == |%s|\n", tab_split[i]);
+	printf("TAB_SPLIT BEFORE LIST_ADD +1 == |%s|\n", tab_split[i + 1]);
+*/
 	while(tab_split[i])
 	{
+		printf("on rentre ici ???");
+
 		if (list_add(infos_a, tab_split[i]) == ERROR)
-		{
-			free_list(infos_a);
-			free(infos_a);
-			ft_putstr("Error\n");
-			return (ERROR);
-		}
+			return (free_list(infos_a));
 		i++;
+		printf("CURRENT TAB SPLIT  XOXOXOX CONTENT = \t|%s|\n", tab_split[i]);
 	}
 	return (0);
 }

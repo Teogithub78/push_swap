@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:28:32 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 12:29:20 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:02:58 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,8 @@ int	check_size(char *str)
 int		check_chars(char *str)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -73,7 +71,7 @@ int		check_chars(char *str)
 			if (str[i] == '-' || str[i] == '+' || str[i] == ' '|| str[i] == '\0')
 			;
 			else
-				return (-1);
+				return (ERROR);
 		}
 		i++;
 	}
@@ -87,10 +85,9 @@ int		check_arg(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
-		if (check_chars(av[i]) < 0 || check_signs(av[i]) < 0 || check_size(av[i] < 0))
+		if (check_chars(av[i]) < 0 || check_signs(av[i]) < 0 || check_size(av[i]) < 0)
 		{
-			ft_putstr("ERROR");
-			return (-1);
+			return (ERROR);
 		}
 		i++;
 	}

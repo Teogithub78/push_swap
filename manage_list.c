@@ -6,11 +6,11 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:29:49 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/11/30 18:43:31 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:28:29 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+//#include "push_swap.h"
 
 int	print_list(node_t *head)
 {

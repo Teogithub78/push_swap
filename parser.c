@@ -1,4 +1,4 @@
-#include "push_swap.h"
+//#include "push_swap.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -291,7 +291,7 @@ char	*ft_super_join(int ac, char **av)
 	printf("save = |%s|\n", save);
 	return (save);
 }
-
+/*
 int	ft_atoi_plus(node_t *list, char *str)
 {
 	long int li;
@@ -308,13 +308,13 @@ int	ft_atoi_plus(node_t *list, char *str)
 			retour = retour * 10;
 	}
 	if (retour > 2147483647 || retour < -2147483648)
-		return (-1);
+		return (ERROR);
 
 	else
 		list->val = (int)retour;
 	return (0);
 }
-
+*/
 int	*value_table_int(char **str)
 {
 	int	i;

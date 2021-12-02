@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 17:39:40 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:14:51 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h> //A RETIRER !!!!
 
 typedef struct node
 {
@@ -33,10 +35,15 @@ int	push_swap(int ac, char **av);
 int	ft_atoi(char *str);
 char	*ft_super_join(int ac, char **av);
 int	ft_super_len(int ac, char **av);
-int	list_setup(char **tab_split);
-save_t	*manage_arg(int ac, char **av);
+int	list_setup_a(char **tab_split, save_t *infos_a);
+int	manage_arg(int ac, char **av, save_t *list_a);
 char	**ft_split(char const *s, char c);
-save_t	*list_init_b(save_t *infos_b);
+int		info_init(save_t *infos);
+int		check_arg(int ac, char **av);
+int	free_tab(char **tab);
+int	free_list(save_t *infos);
+int	ft_atoi_plus(node_t *list, char *str);
+void	ft_putstr(char *s);
 
 # define ERROR -1
 # define OK 1
