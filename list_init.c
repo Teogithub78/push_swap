@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 18:50:41 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/03 12:44:35 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ int		list_init_a(save_t *infos_a, node_t *stack_a)
 
 int	info_init(save_t *infos)
 {
-	//infos = (save_t *)malloc(sizeof(save_t));
-//	if (!infos)
-//		return (ERROR);
 	infos->head = NULL;
 	infos->tail = NULL;
 	return(0);
@@ -73,18 +70,11 @@ int		list_add(save_t *infostack, char *str)
 		ft_print_lista(infostack, new);
 		return(0);
 	}
-	printf("ATOI WORKED ?!  == |%i|\n\n", new->val);
-	//FAIRE INIT DE LIST CHAINEES
 	new->next = infostack->head;
-	printf("A\n");
 	new->prev = infostack->tail;
-	printf("B\n");
 	infostack->head->prev = new;
-	printf("C\n");
 	infostack->tail->next = new;
-	printf("D\n");
 	infostack->tail = new;
-	printf("list add WORKED ?!  == \n\n");
 
 	return(0);
 }
@@ -100,7 +90,6 @@ int	free_list(save_t *infos)
 		free(temp->prev);
 	}
 	free(temp);
-	//free(infos);
 	return (ERROR);
 }
 
@@ -110,33 +99,17 @@ int		list_setup_a(char **tab_split, save_t *infos_a)
 	int	i;
 
 	i = 0;
-	info_init(infos_a);
-/*
-	if (list_add(infos_a, tab_split[i]) == ERROR)
-		return(ERROR);
-	printf("LIST INIT A == |OK|\n");
-	ft_print_lista(infos_a, &stack_a);
-	//&stack_a = infos_a->head;
-	if (ft_atoi_plus(&stack_a, tab_split[i]) == ERROR)
+	if (info_init(infos_a) == ERROR)
 	{
-		free_list(infos_a);
 		return (ERROR);
+
 	}
-	printf("first ATOI PLUS == |OK|\n");
 
-	i++;
-
-	printf("TAB_SPLIT BEFORE LIST_ADD == |%s|\n", tab_split[i]);
-	printf("TAB_SPLIT BEFORE LIST_ADD +1 == |%s|\n", tab_split[i + 1]);
-*/
 	while(tab_split[i])
 	{
-		printf("on rentre ici ???");
-
 		if (list_add(infos_a, tab_split[i]) == ERROR)
 			return (free_list(infos_a));
 		i++;
-		printf("CURRENT TAB SPLIT  XOXOXOX CONTENT = \t|%s|\n", tab_split[i]);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:28:32 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 17:02:58 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:55:35 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ int		check_signs(char *str)
 	{
 		if (str[i] == '+' || str[i] == '-')
 		{
-			if (str[i - 1] != ' ')
-			{
-				write(1, "ICI\n", 4);
-				return (-1);
-			}
 			i++;
 			if (str[i] < '0' || str[i] > '9')
 			{
@@ -35,6 +30,7 @@ int		check_signs(char *str)
 		}
 		i++;
 	}
+	//ft_putstr("SIGNS INNONCENT !!");
 	return(1);
 }
 
@@ -47,16 +43,24 @@ int	check_size(char *str)
 	j = 0;
 	while(str[i])
 	{
-		if (str[i] > '0' && str[i] < '9')
+		j = 0;
+		if (str[i] > '0' && str[i] <= '9')
+		{
+			i++;
 			while (str[i] && str[i] >= '0' && str[i] <= '9')
 			{
 				i++;
 				j++;
+				//printf("CHECK SIZE : j == |%i| \n", j);
 				if (j > 10)
 					return (-1);
 			}
+		}
+		i++;
 	}
-	return (0);
+	//ft_putstr("SIZE INNOCENT !!\n");
+
+	return (1);
 }
 
 int		check_chars(char *str)
@@ -75,6 +79,8 @@ int		check_chars(char *str)
 		}
 		i++;
 	}
+	//ft_putstr("CHAR INNOCENT !!");
+
 	return (1);
 }
 
@@ -83,8 +89,11 @@ int		check_arg(int ac, char **av)
 	int	i;
 
 	i = 1;
+	//ft_putstr("P | R | O | U | T\n");
+	//printf("CHECK_ARG : \tI = |%i|", i);
 	while (i < ac)
 	{
+	//	printf("CHECK_ARG : \tI = |%i|", i);
 		if (check_chars(av[i]) < 0 || check_signs(av[i]) < 0 || check_size(av[i]) < 0)
 		{
 			return (ERROR);

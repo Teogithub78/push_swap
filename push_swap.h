@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 18:14:51 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/03 14:52:16 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ int	free_tab(char **tab);
 int	free_list(save_t *infos);
 int	ft_atoi_plus(node_t *list, char *str);
 void	ft_putstr(char *s);
+int		push_stack (save_t *infos_a, save_t *infos_b);
+save_t		*switch_stack(save_t *infostack);
+int		rotate_stack(save_t *infostack, char *op);
+int		reverse_rotate_stack(save_t *infostack, char *op);
+int		count_numbers_list(save_t *infos_a);
+int	index_final(save_t *infos_a, int size_chain);
 
 # define ERROR -1
 # define OK 1
