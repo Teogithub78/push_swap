@@ -39,7 +39,7 @@ $(NAME): message $(OBJ)
 fs : $(OBJ)
 	$(CC) $(CFLAGS) $(FSANITIZE) -I$(PATH_INC) -c $< -o $@
 
-
+# gcc push_swap.c check_arg.c manage_arg.c list_init.c utils.c utils_algo.c operations.c
 
 clean :
 		@echo "-------------------------"

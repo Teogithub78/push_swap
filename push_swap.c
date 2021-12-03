@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 15:39:09 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:10:24 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,32 @@ int	main(int ac, char **av)
 		return (ft_print_ERROR());
 
 	i = count_numbers_list(&list_a);
+	index_final(&list_a, i);
+
+	if (i < 6)
+		algo_to_5(&list_a, i);
+
+	printstacks(&list_a, &list_b);
+
+
+
+	/*
+	CHECKS SI OPERATIONS MARCHENT CORRECTEMENT
 	printf("\t CHECK COUNT LIST == |%i|\n", i);
 	index_final(&list_a, i);
 	printstacks(&list_a, &list_b);
 
-	free_list(&list_a);
+	push_stack(&list_a, &list_b, "\t| pb |\n");
+	printstacks(&list_a, &list_b);
+	switch_stack(&list_a, "\t | sa | \n");
+	printstacks(&list_a, &list_b);
+	rotate_stack(&list_a, "\t | ra |\n");
+	printstacks(&list_a, &list_b);
+	reverse_rotate_stack(&list_a, "rra\n");
+	printstacks(&list_a, &list_b);
+	*/
+	if (list_a.head != NULL)
+		free_list(&list_a);
 	if (list_b.head != NULL)
 		free_list(&list_b);
 	return (0);

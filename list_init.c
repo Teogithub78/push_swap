@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 12:44:35 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:16:36 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ int		list_add(save_t *infostack, char *str)
 	if (!new)
 		return (ERROR);
 	printf("CURRENT TAB SPLIT CONTENT LIST ADD = \t|%s|\n", str);
-
-
 	if (ft_atoi_plus(new, str) == ERROR)
 		return (ERROR);
 	if (infostack->head == NULL)
@@ -83,8 +81,10 @@ int	free_list(save_t *infos)
 {
 	node_t	*temp;
 
+	if (infos->head == NULL || infos->tail == NULL)
+		return(ERROR);
 	temp = infos->head;
-	while (temp != infos->tail || temp->next == NULL)
+	while (temp != infos->tail)
 	{
 		temp = temp->next;
 		free(temp->prev);
@@ -102,7 +102,6 @@ int		list_setup_a(char **tab_split, save_t *infos_a)
 	if (info_init(infos_a) == ERROR)
 	{
 		return (ERROR);
-
 	}
 
 	while(tab_split[i])
