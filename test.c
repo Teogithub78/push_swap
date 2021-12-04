@@ -1,6 +1,4 @@
-#include "push_swap.h"
-#include <stdlib.h>
-#include <stdio.h>
+
 
 int	ft_atoi(char *str)
 {
@@ -170,7 +168,7 @@ int	printstack(save_t *infos_a, char stack)
 	}
 	return (0);
 }
-
+/*
 int		push_stack (save_t *source, save_t *dest, char *op)
 {
 	node_t	*s1;
@@ -192,7 +190,7 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 	ft_putstr(op);
 	return (0);
 }
-
+*/
 int	double_rotation(save_t *infos_a, save_t *infos_b)
 {
 	rotate_stack(infos_a, "");

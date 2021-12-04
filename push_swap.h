@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 18:04:19 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/04 14:21:18 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int		rotate_stack(save_t *infostack, char *op);
 int		reverse_rotate_stack(save_t *infostack, char *op);
 int		count_numbers_list(save_t *infos_a);
 int	index_final(save_t *infos_a, int size_chain);
-int	algo_to_5(save_t *infos_a, int	size_stack);
+int	algo_to_5(save_t *infos_a, save_t *infos_b, int	size_stack);
+int	printstack(save_t *infos, char c);
 
 # define ERROR -1
 # define OK 1

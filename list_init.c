@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 18:16:36 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:48:32 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,19 @@ int	free_list(save_t *infos)
 	if (infos->head == NULL || infos->tail == NULL)
 		return(ERROR);
 	temp = infos->head;
-	while (temp != infos->tail)
+	if (temp == infos->tail)
 	{
+		free (temp);
+		return(ERROR);
+	}
+	while (temp != infos->tail)// && temp->next != NULL && temp->next != temp)
+	{
+		printf("1 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 		temp = temp->next;
 		free(temp->prev);
+		printf("2 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 	}
+	printf("OUT ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 	free(temp);
 	return (ERROR);
 }
