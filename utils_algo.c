@@ -6,17 +6,41 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/04 18:59:45 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/06 18:25:36 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	check_doubles(save_t *infos_a)
+{
+	node_t *current;
+	node_t *save;
+	int temp_val;
+
+	save = infos_a->head;
+	temp_val = current->val;
+	current = save;
+	if (save == save->next)
+		return (0);
+
+	while (save != infos_a->tail)
+	{
+		current = current->next;
+		if (current->val == save->val)
+		{
+			//free_list(infos_a);
+			return(ERROR);
+		}
+		save = save->next;
+	}
+
+}
+
 int	count_numbers_list(save_t *infos_a)
 {
 	int i;
 	node_t	*stack_a;
-	node_t	*temp;
 
 	i = 0;
 	stack_a = infos_a->head;
@@ -24,20 +48,13 @@ int	count_numbers_list(save_t *infos_a)
 	if (!stack_a)
 		return (0);
 	i = 1;
+	if (check_doubles(infos_a) == ERROR)
+		return (ERROR);
 	while(stack_a->next != infos_a->head)
 	{
 		i++;
-		while(stack_a->next != temp)
-		{
-			printf("prout\n");
-			stack_a = stack_a->next;
-			printf("|%i|")
-			if (temp->val == stack_a->val)
-				return (ERROR);
-		}
 		stack_a->index = 0;
 		stack_a = stack_a->next;
-		temp = stack_a;
 	}
 	stack_a->index = 0;
 	return (i);
