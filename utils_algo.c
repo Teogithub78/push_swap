@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/06 18:33:04 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/06 19:11:47 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ int	check_doubles(save_t *infos_a)
 	int temp_val;
 
 	save = infos_a->head;
-	temp_val = current->val;
 	current = save;
 	if (save == save->next)
 		return (0);
 
 	while (save != infos_a->tail)
 	{
-		current = current->next;
-		if (current->val == save->val)
+		current = save->next;
+		while(current != save)
 		{
-			//free_list(infos_a);
-			return(ERROR);
+			if (current->val == save->val)
+				return(ERROR);
+			current = current->next;
 		}
 		save = save->next;
 	}
-
+	return(0);
 }
 
 int	count_numbers_list(save_t *infos_a)
@@ -48,7 +48,10 @@ int	count_numbers_list(save_t *infos_a)
 		return (0);
 	i = 1;
 	if (check_doubles(infos_a) == ERROR)
+	{
+		printf("OMG OMG \n\n****");
 		return (ERROR);
+	}
 	while(stack_a->next != infos_a->head)
 	{
 		i++;
@@ -112,5 +115,6 @@ int	check_sorted(save_t *infos_a)
 	}
 	if (i != current->index)
 		return (ERROR);
+	free_list(infos_a);
 	return (0);
 }

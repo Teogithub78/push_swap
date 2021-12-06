@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/04 18:49:55 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/06 19:14:49 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	printstacks(save_t *infos_a, save_t *infos_b)
 
 int	ft_print_ERROR()
 {
-	write(2, "Error\n", 6);
+	write(2, "\n*** Error ***\n\n", 16);
 	return(ERROR);
 }
 
@@ -132,6 +132,13 @@ int	main(int ac, char **av)
 		return (ft_print_ERROR());
 	}
 	index_final(&list_a, i);
+	if (check_sorted(&list_a) == 0)
+	{
+		ft_putstr("YOUPI\n");
+		return (0);
+	}
+
+
 
 	printf("\n\t******SETUP COMPLETE******\n");
 	printf("STACK SIZE == \t|%i|\n", i);
