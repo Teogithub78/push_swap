@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 14:50:05 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 19:02:22 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/10 17:59:55 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ size_t			ft_splitstrlcpy(char *dst, const char *src, size_t size)
 		i++;
 	}
 	dst[i] = '\0';
-	ft_putstr("DST == |");
-	ft_putstr(dst);
-	ft_putstr("|\n");
+	//ft_putstr("DST == |");
+	//ft_putstr(dst);
+	//ft_putstr("|\n");
 	return (i);
 }
 
@@ -112,7 +112,6 @@ char			**ft_fill_row(char **dst, char const *src, char c)
 			}
 		}
 	}
-	printf("ROW =\t|%li|\n", row);
 	dst[row] = NULL;
 	return (dst);
 }
@@ -125,7 +124,6 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (0);
 	i = ft_count_words(s, c);
-	printf("\n|%li| == nb de tab de split\n\n\n", i);
 	if (!(str = (char **)malloc(sizeof(char *) * (i + 1))))
 		return (0);
 	return (ft_fill_row(str, s, c));
@@ -185,11 +183,17 @@ int	free_tab(char **tab)
 	while (tab[i])
 	{
 		free(tab[i]);
-		printf("tab[%i] qui est free \n", i);
 		i++;
 	}
 	free(tab);
 	return (0);
+}
+
+int	ft_abs(int value)
+{
+	if (value < 0)
+		value = value * (-1);
+	return (value);
 }
 
 int	ft_super_len(int ac, char **av)

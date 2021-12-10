@@ -6,11 +6,14 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:13:46 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/04 17:31:38 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:49:57 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <string.h>
+
+
 /*
 int		push_stack (save_t *infos_a, save_t *infos_b)
 {
@@ -115,10 +118,11 @@ int		push_stack_dest(save_t *dest, node_t *to_move)
 		to_move->prev = dest->tail;
 		dest->head->prev = to_move;
 		dest->tail->next = to_move;
-		if (dest->tail == dest->head)
-			dest->tail = to_move;
+		//if (dest->tail == dest->head)
+		//	dest->head = to_move;
 		dest->head = to_move;
 	}
+
 	return (0);
 }
 
@@ -147,12 +151,22 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 
 }
 
-int		switch_stack(save_t *infostack, char *op)
+int		swap_stack(save_t *infostack, char *op)
 {
 	node_t	*new_head;
+	int	t_val;
+	int t_index;
 
 	if(infostack->head == infostack->tail || infostack->head == NULL || infostack->tail == NULL)
 		return(1);
+	t_val = infostack->head->val;
+	t_index = infostack->head->index;
+	infostack->head->val = infostack->head->next->val;
+	infostack->head->index = infostack->head->next->index;
+	infostack->head->next->val = t_val;
+	infostack->head->next->index = t_index;
+
+/*
 	new_head = infostack->head->next;
 	infostack->tail->next = new_head;
 	infostack->head->next = new_head->next;
@@ -161,11 +175,13 @@ int		switch_stack(save_t *infostack, char *op)
 	new_head->prev = infostack->tail;
 	new_head->next = infostack->head;
 	infostack->head = new_head;
+*/
+
 	ft_putstr(op);
 	return (0);
 }
 /*
-save_t		*switch_stack(save_t *infostack)
+save_t		*swap_stack(save_t *infostack)
 {
 	node_t	*stack1;
 	node_t	*stack2;

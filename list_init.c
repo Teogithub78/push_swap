@@ -6,12 +6,12 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/04 16:48:32 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:07:45 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
-
+/*
 int	ft_print_lista(save_t *infos_a, node_t *stack_a)
 {
 	printf("\n*************INFOLIST A**************\n");
@@ -24,21 +24,17 @@ int	ft_print_lista(save_t *infos_a, node_t *stack_a)
 
 	return(0);
 }
-
+*/
 int		list_init_a(save_t *infos_a, node_t *stack_a)
 {
 	infos_a = (save_t *)malloc(sizeof(save_t));
 	stack_a = (node_t *)malloc(sizeof(node_t));
 	if (!infos_a || !stack_a)
-	{
-		printf("\nPROUT\n");
 		return (ERROR);
-	}
 	infos_a->head = stack_a;
 	infos_a->tail = stack_a;
 	stack_a->next = infos_a->head;
 	stack_a->prev = infos_a->tail;
-	ft_print_lista(infos_a, stack_a);
 	return (0);
 }
 
@@ -56,7 +52,6 @@ int		list_add(save_t *infostack, char *str)
 	new = (node_t *)malloc(sizeof(node_t));
 	if (!new)
 		return (ERROR);
-	printf("CURRENT TAB SPLIT CONTENT LIST ADD = \t|%s|\n", str);
 	if (ft_atoi_plus(new, str) == ERROR)
 		return (ERROR);
 	if (infostack->head == NULL)
@@ -65,7 +60,6 @@ int		list_add(save_t *infostack, char *str)
 		infostack->tail = new;
 		new->next = infostack->head;
 		new->prev = infostack->tail;
-		ft_print_lista(infostack, new);
 		return(0);
 	}
 	new->next = infostack->head;
@@ -91,12 +85,12 @@ int	free_list(save_t *infos)
 	}
 	while (temp != infos->tail)// && temp->next != NULL && temp->next != temp)
 	{
-		printf("1 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
+		//printf("1 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 		temp = temp->next;
 		free(temp->prev);
-		printf("2 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
+		//printf("2 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 	}
-	printf("OUT ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
+	//printf("OUT ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
 	free(temp);
 	return (ERROR);
 }
@@ -120,43 +114,3 @@ int		list_setup_a(char **tab_split, save_t *infos_a)
 	}
 	return (0);
 }
-
-/*
-int	printstacks(node_t *stack_a, node_t *stack_b, save_t *infos_a, save_t *infos_b)
-{
-	int i;
-
-	i = 0;
-	stack_a = infos_a->head;
-	stack_b = infos_b->head;
-	//printf("\t *** STACK A ***\n");
-	//printf("INDEX =\t|%i|\n", i);
-	//printf("VALUE = \t|%i|\n\n", stack_a->val);
-	//stack_a->prev = stack_a;
-	//stack_a = stack_a->next;
-	while (stack_a != NULL)
-	{
-		i++;
-		printf("\t *** STACK A ***\n");
-		printf("INDEX \t=\t|%i|\n", i);
-		printf("VALUE \t= \t|%i|\n\n", stack_a->val);
-		stack_a = stack_a->next;
-		if (stack_a == NULL || stack_a == infos_a->head)
-			break;
-	}
-
-	i = 0;
-	while (stack_b)
-	{
-		i++;
-		printf("\t *** STACK B ***\n");
-		printf("INDEX \t=\t|%i|\n", i);
-		printf("VALUE \t= \t|%i|\n\n", stack_b->val);
-		//printf("%p\n", stack_b);
-		stack_b = stack_b->next;
-		if (stack_b == NULL || stack_b == infos_b->head)
-			break;
-	}
-	return (0);
-}
-*/

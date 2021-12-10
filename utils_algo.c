@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/06 19:11:47 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/10 18:17:44 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,14 @@ int	count_numbers_list(save_t *infos_a)
 	int i;
 	node_t	*stack_a;
 
+	infos_a->size = 0;
 	i = 0;
 	stack_a = infos_a->head;
 	if (!stack_a)
-		return (0);
+		return (ERROR);
 	i = 1;
 	if (check_doubles(infos_a) == ERROR)
-	{
-		printf("OMG OMG \n\n****");
 		return (ERROR);
-	}
 	while(stack_a->next != infos_a->head)
 	{
 		i++;
@@ -59,7 +57,8 @@ int	count_numbers_list(save_t *infos_a)
 		stack_a = stack_a->next;
 	}
 	stack_a->index = 0;
-	return (i);
+	infos_a->size = i;
+	return (0);
 }
 
 int	index_final(save_t *infos_a, int size_chain)
@@ -76,16 +75,11 @@ int	index_final(save_t *infos_a, int size_chain)
 	while(i <= size_chain)
 	{
 		stack_a = stack_a->next;
-	//	printf("ca tourne\n");
 		if (stack_a == temp_addr && stack_a->index == 0)
 		{
 			stack_a->index = i++;
-	//		printf(" INDEX |%i|\n", i);
 			while(stack_a->index != 0 && i <= size_chain)
-			{
-	//			printf("prout");
 				stack_a = stack_a->next;
-			}
 			temp = stack_a->val;
 			temp_addr = stack_a;
 		}

@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:14:40 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 15:35:37 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/10 12:06:11 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*ft_super_join(int ac, char **av)
 			str[k++] = ' ';
 	}
 	str[k] = '\0';
-	printf("SUPER JOIN == |%s|\n", str);
 	return (str);
 }
 
