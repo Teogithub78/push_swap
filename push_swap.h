@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 18:26:40 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:43:09 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		count_numbers_list(save_t *infos_a);
 int	index_final(save_t *infos_a, int size_chain);
 int	algo_to_5(save_t *infos_a, save_t *infos_b, int	size_stack);
 int		big_algo(save_t *infos_a, save_t *infos_b);
+int	ft_abs(int value);
 
 int	algo_5(save_t *infos_a, save_t *infos_b);
 int	check_sorted(save_t *infos_a);

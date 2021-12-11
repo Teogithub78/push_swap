@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 12:07:45 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 13:16:13 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	info_init(save_t *infos)
 {
 	infos->head = NULL;
 	infos->tail = NULL;
+	infos->size = 0;
 	return(0);
 }
 
@@ -67,7 +68,7 @@ int		list_add(save_t *infostack, char *str)
 	infostack->head->prev = new;
 	infostack->tail->next = new;
 	infostack->tail = new;
-
+	infostack->size += 1;
 	return(0);
 }
 
@@ -106,6 +107,7 @@ int		list_setup_a(char **tab_split, save_t *infos_a)
 		return (ERROR);
 	}
 
+	infos_a->size = 0;
 	while(tab_split[i])
 	{
 		if (list_add(infos_a, tab_split[i]) == ERROR)

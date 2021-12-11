@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:13:46 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 12:49:57 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:51:01 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		push_stack_dest(save_t *dest, node_t *to_move)
 		dest->tail = to_move;
 		to_move->next = to_move;
 		to_move->prev = to_move;
+		dest->size = 1;
 		return (0);
 	}
 	else
@@ -118,11 +119,9 @@ int		push_stack_dest(save_t *dest, node_t *to_move)
 		to_move->prev = dest->tail;
 		dest->head->prev = to_move;
 		dest->tail->next = to_move;
-		//if (dest->tail == dest->head)
-		//	dest->head = to_move;
 		dest->head = to_move;
+		dest->size += 1;
 	}
-
 	return (0);
 }
 
@@ -146,9 +145,9 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 		source->head = source->head->next;
 	}
 	push_stack_dest(dest, to_move);
+	source->size--;
 	ft_putstr(op);
 	return (0);
-
 }
 
 int		swap_stack(save_t *infostack, char *op)

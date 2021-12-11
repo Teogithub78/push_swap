@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:28:32 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/03 15:55:35 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:56:35 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,12 @@ int	check_size(char *str)
 			{
 				i++;
 				j++;
-				//printf("CHECK SIZE : j == |%i| \n", j);
 				if (j > 10)
 					return (-1);
 			}
 		}
 		i++;
 	}
-	//ft_putstr("SIZE INNOCENT !!\n");
-
 	return (1);
 }
 

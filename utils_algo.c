@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 18:17:44 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 12:44:42 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	count_numbers_list(save_t *infos_a)
 	}
 	stack_a->index = 0;
 	infos_a->size = i;
-	return (0);
+	return (i);
 }
 
 int	index_final(save_t *infos_a, int size_chain)

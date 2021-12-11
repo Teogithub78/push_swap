@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 18:40:46 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:57:23 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	printstacks(save_t *infos_a, save_t *infos_b)
 
 int	ft_print_ERROR()
 {
-	write(2, "\n*** Error ***\n\n", 16);
+	write(2, "Error\n", 6);
 	return(ERROR);
 }
 
@@ -123,7 +123,6 @@ int	main(int ac, char **av)
 	index_final(&list_a, i);
 	if (check_sorted(&list_a) == 0)
 	{
-		ft_putstr("YOUPI\n");
 		return (0);
 	}
 
@@ -133,7 +132,6 @@ int	main(int ac, char **av)
 	if (i > 5)
 		big_algo(&list_a, &list_b);
 
-	printstack(&list_a, 'A');
 	if (list_a.head != NULL)
 		free_list(&list_a);
 	if (list_b.head != NULL)
