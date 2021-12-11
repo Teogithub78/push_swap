@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 16:57:23 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 17:57:26 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	main(int ac, char **av)
 	{
 		return (0);
 	}
+//	printstack(&list_a, 'A');
 
 	if (i < 6)
 		algo_to_5(&list_a, &list_b, i);
@@ -132,6 +133,7 @@ int	main(int ac, char **av)
 	if (i > 5)
 		big_algo(&list_a, &list_b);
 
+//	printstack(&list_a, 'A');
 	if (list_a.head != NULL)
 		free_list(&list_a);
 	if (list_b.head != NULL)

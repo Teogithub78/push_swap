@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:46:01 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 16:56:08 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/11 18:40:32 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,26 @@ int	put_to_head(save_t *infos, int moves)
 	return (0);
 }
 
+int	put_to_head_b(save_t *infos, int moves)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = moves;
+	if (moves < 0)
+		j = moves * (-1);
+	while (i < j)
+	{
+		if (moves < 0)
+			reverse_rotate_stack(infos, "rrb\n");
+		else
+			rotate_stack(infos, "rb\n");
+		i++;
+	}
+	return (0);
+}
+
 int	biggest_index(save_t *infos)
 {
 	node_t	*current;
@@ -135,20 +155,20 @@ int push_to_b(save_t * infos_a, save_t* infos_b)
 	index_min = smallest_index(infos_b);
 	if (index_min == 0)
 	{
-		push_stack(infos_a, infos_b, "pa\n");
+		push_stack(infos_a, infos_b, "pb\n");
 		return (0);
 	}
-	if (infos_a->head->index < index_min)
+	if (infos_a->head->index > infos_b->head)
 	{
-		push_stack(infos_a, infos_b, "pa\n");
+		push_stack(infos_a, infos_b, "pb\n");
 		return (0);
 	}
 	if (infos_a->head->index > biggest_index(infos_b))
 	{
 		index_min = nb_moves(infos_b, index_min);
-		put_to_head(infos_b, index_min);
+		put_to_head_b(infos_b, index_min);
 	}
-	push_stack(infos_a, infos_b, "pa\n");
+	push_stack(infos_a, infos_b, "pb\n");
 	return (0);
 }
 
@@ -189,6 +209,14 @@ int	find_from_bottom(save_t *infos, int chunk)
 	}
 	return (ERROR);
 }
+
+// int	find_from_index_top(save_t *infos, int index)
+// {
+// 	int	i;
+
+// 	i = 0;
+
+// }
 
 int	empty_chunk(save_t *infos_a, save_t *infos_b, int chunk)
 {
@@ -246,7 +274,7 @@ int	push_to_a(save_t *infos_b, save_t *infos_a)
 			index_max--;
 		}
 	}
-	push_stack(infos_b, infos_a, "pb\n");
+	push_stack(infos_b, infos_a, "pa\n");
 	return (0);
 }
 
