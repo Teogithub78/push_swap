@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:13:46 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 16:51:01 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/13 15:26:58 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int		swap_stack(save_t *infostack, char *op)
 	int t_index;
 
 	if(infostack->head == infostack->tail || infostack->head == NULL || infostack->tail == NULL)
-		return(1);
+		return(0);
 	t_val = infostack->head->val;
 	t_index = infostack->head->index;
 	infostack->head->val = infostack->head->next->val;
