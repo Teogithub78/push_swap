@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 12:43:09 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:38:18 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ typedef struct node
 {
     int val;
 	int index;
+	int moves1;
+	int moves2;
+	int movef;
+	int	double_ops;
     struct node * next;
 	struct node	* prev;
 } node_t;
@@ -54,7 +58,7 @@ int	index_final(save_t *infos_a, int size_chain);
 int	algo_to_5(save_t *infos_a, save_t *infos_b, int	size_stack);
 int		big_algo(save_t *infos_a, save_t *infos_b);
 int	ft_abs(int value);
-
+int	algo_big(save_t *infos_a, save_t *infos_b);
 int	algo_5(save_t *infos_a, save_t *infos_b);
 int	check_sorted(save_t *infos_a);
 int	printstack(save_t *infos, char c);

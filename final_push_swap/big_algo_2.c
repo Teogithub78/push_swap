@@ -6,11 +6,11 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:46:01 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/13 19:04:39 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:37:48 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+//#include "push_swap.h"
 
 /*
 int	chunk_size(int	size list)
@@ -210,6 +210,7 @@ int check_bigger(save_t *infos, int index_tm, int biggest)
 	}
 }
 */
+	/*
 int push_to_b(save_t * infos_a, save_t* infos_b)
 {
 	int	biggest;
@@ -229,7 +230,7 @@ int push_to_b(save_t * infos_a, save_t* infos_b)
 		push_stack(infos_a, infos_b, "pb\n");
 	}
 	return (0);
-	/*
+
 	int	index_max;
 
 	index_max = biggest_index(infos_b);
