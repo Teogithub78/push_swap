@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/13 18:57:44 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/19 16:23:08 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	printstack(save_t *infos, char c)
 	//printf("INDEX \t=\t|%i|\n", stack->index);
 	//printf("VALUE \t= \t|%i|\n", stack->val);
 	//ft_putstr("ICI ???\n");
-	ft_putstr("ICI ???\n");
+//	ft_putstr("ICI ???\n");
 //	printf("ADDRESSE NEXT \t=\t|%p|\n", stack->next);
 //	printf("ADDRESSE PREV \t=\t|%p|\n", stack->prev);
 	}

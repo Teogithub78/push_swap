@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/15 18:49:43 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/19 18:52:55 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ int	printstack(save_t *infos, char c)
 	{
 		i++;
 		printf("INDEX \t=\t|%i|\n", stack->index);
-		printf("VALUE \t= \t|%i|\n", stack->val);
-		printf("VALEUR M1 \t=\t|%i|\n", stack->moves1);
-		printf("VALEUR M2 \t=\t|%i|\n", stack->moves2);
-		printf("VALEUR MF \t=\t|%i|\n", stack->movef);
+//		printf("VALUE \t= \t|%i|\n", stack->val);
+//		printf("VALEUR M1 \t=\t|%i|\n", stack->moves1);
+//		printf("VALEUR M2 \t=\t|%i|\n", stack->moves2);
+//		printf("VALEUR MF \t=\t|%i|\n", stack->movef);
 		stack = stack->next;
 		if (stack == NULL || stack == infos->head)
 			break;

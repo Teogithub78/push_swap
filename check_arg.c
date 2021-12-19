@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:28:32 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 16:56:35 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/19 16:23:33 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		check_signs(char *str)
 			i++;
 			if (str[i] < '0' || str[i] > '9')
 			{
-				write(1, "LA\n", 3);
+				//write(1, "LA\n", 3);
 				return (-1);
 			}
 		}

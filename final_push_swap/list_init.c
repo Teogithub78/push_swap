@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 13:16:13 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/16 10:46:55 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ int	info_init(save_t *infos)
 	return(0);
 }
 
+int	list_init_value(node_t *new)
+{
+	new->moves1 = 0;
+	new->moves2 = 0;
+	new->movef = 0;
+	new->double_ops = 0;
+	return (0);
+}
+
 int		list_add(save_t *infostack, char *str)
 {
 	node_t	*new;
@@ -55,6 +64,7 @@ int		list_add(save_t *infostack, char *str)
 		return (ERROR);
 	if (ft_atoi_plus(new, str) == ERROR)
 		return (ERROR);
+	list_init_value(new);
 	if (infostack->head == NULL)
 	{
 		infostack->head = new;
