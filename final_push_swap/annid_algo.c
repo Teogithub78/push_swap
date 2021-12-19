@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/19 18:48:55 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/19 19:52:24 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,11 @@ node_t	*find_least_op(save_t *infos)
 	{
 		current = current->next;
 		if(current == infos->head)
-		{
-		//	printf("LEAST OP == %i\n", save->movef);
 			return (save);
-		}
 		if (minimum > current->movef)
 		{
 			minimum = current->movef;
 			save = current;
-
 		}
 	}
 	return (save);
@@ -135,19 +131,10 @@ int	find_best_spot(save_t *infos_b, node_t *current)
 		counter++;
 		temp = temp->next;
 	}
-//	if (counter > (infos_b->size / 2))
-//		return (infos_b->size - counter);
-//	else
+	if (counter > (infos_b->size / 2))
+		return (counter - infos_b->size);
+	else
 		return (counter);
-}
-
-int	manage_smallest(save_t *infos_b, node_t *current, node_t *biggest)
-{
-	int	moves;
-	node_t *temp;
-
-	temp = find_smallest(infos_b);
-	moves_to_head(infos_b, biggest);
 }
 
 int	manage_extrema(save_t *infos, node_t *biggest, node_t *smallest, node_t *current)
