@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/19 19:52:24 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/19 20:04:06 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ node_t	*find_least_op(save_t *infos)
 		current = current->next;
 		if(current == infos->head)
 			return (save);
+		if (minimum == current->movef)
+		{
+			if (save->index > current->index)
+				save = current;
+		}
 		if (minimum > current->movef)
 		{
 			minimum = current->movef;
