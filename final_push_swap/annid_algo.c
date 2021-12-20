@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/19 20:04:06 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 19:01:42 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 
 */
 
-node_t	*find_least_op(save_t *infos)
+t_node	*find_least_op(t_save *infos)
 {
-	node_t *current;
+	t_node *current;
 	int	minimum;
-	node_t	*save;
+	t_node	*save;
 
 	if (infos->head == NULL)
 		return (NULL);
@@ -55,10 +55,10 @@ node_t	*find_least_op(save_t *infos)
 	return (save);
 }
 
-node_t	*find_smallest(save_t *infos)
+t_node	*find_smallest(t_save *infos)
 {
-	node_t	*current;
-	node_t	*smallest_indx;
+	t_node	*current;
+	t_node	*smallest_indx;
 
 	if (infos->head == NULL)
 		return (0);
@@ -75,10 +75,10 @@ node_t	*find_smallest(save_t *infos)
 	return (smallest_indx);
 }
 
-node_t	*find_biggest(save_t *infos)
+t_node	*find_biggest(t_save *infos)
 {
-	node_t	*current;
-	node_t	*biggest_indx;
+	t_node	*current;
+	t_node	*biggest_indx;
 
 	if (infos->head == NULL)
 		return (0);
@@ -95,10 +95,10 @@ node_t	*find_biggest(save_t *infos)
 	return (biggest_indx);
 }
 
-int	moves_to_head(save_t *infos, node_t *current)
+int	moves_to_head(t_save *infos, t_node *current)
 {
 	int	i;
-	node_t *temp;
+	t_node *temp;
 	if (infos->head == NULL || infos->head == infos->tail)
 		return (0);
 
@@ -119,9 +119,9 @@ int	moves_to_head(save_t *infos, node_t *current)
 	return (i);
 }
 
-int	find_best_spot(save_t *infos_b, node_t *current)
+int	find_best_spot(t_save *infos_b, t_node *current)
 {
-	node_t *temp;
+	t_node *temp;
 	int	counter;
 
 	counter = 0;
@@ -142,7 +142,7 @@ int	find_best_spot(save_t *infos_b, node_t *current)
 		return (counter);
 }
 
-int	manage_extrema(save_t *infos, node_t *biggest, node_t *smallest, node_t *current)
+int	manage_extrema(t_save *infos, t_node *biggest, t_node *smallest, t_node *current)
 {
 	if (infos->head == NULL)
 		return (0);
@@ -153,10 +153,10 @@ int	manage_extrema(save_t *infos, node_t *biggest, node_t *smallest, node_t *cur
 	return(0);
 }
 
-int	moves_in_b(save_t *infos_b, node_t *current)
+int	moves_in_b(t_save *infos_b, t_node *current)
 {
-	node_t	*biggest;
-	node_t *smallest;
+	t_node	*biggest;
+	t_node *smallest;
 	int	counter;
 
 	if (infos_b->head == NULL)
@@ -180,7 +180,7 @@ int	moves_in_b(save_t *infos_b, node_t *current)
 	return (counter);
 }
 
-int	double_ops_maths(node_t *current)
+int	double_ops_maths(t_node *current)
 {
 	if ((current->moves1 <= 0 && current->moves2 <= 0) || (current->moves1 >= 0 && current->moves2 >=0))
 	{
@@ -204,38 +204,38 @@ int	double_ops_maths(node_t *current)
 	return (0);
 }
 
-int	ft_magic_maths(node_t *current)
-{
+// int	ft_magic_maths(t_node *current)
+// {
 
 
-	/*
-	int signe;
-	int	retour;
+// 	/*
+// 	int signe;
+// 	int	retour;
 
-	signe = 1;
-	retour = 0;
-	if (current->moves1 == 0 || current->moves2 == 0)
-		return (ft_abs(current->moves1 - current->moves2));
-	if ((current->moves1 > 0 && current->moves2 > 0) || (current->moves1 < 0 && current->moves2 < 0))
-	{
-		current->double_ops = ft_abs(current->moves1 - current->moves2);
-		if (current->moves1 < 0 && current->moves2 < 0)
-			current->double_ops = current->double_ops * (-1);
-		current->movef =  ft_abs(current->moves1) + ft_abs(current->moves2) -
-			ft_abs(current->double_ops);
-		return (0);
-	}
-	else
-	{
-		current->double_ops = 0;
-		current->movef = ft_abs(current->moves1) + ft_abs(current->moves2);
-		return (0);
-	}
-	*/
-}
+// 	signe = 1;
+// 	retour = 0;
+// 	if (current->moves1 == 0 || current->moves2 == 0)
+// 		return (ft_abs(current->moves1 - current->moves2));
+// 	if ((current->moves1 > 0 && current->moves2 > 0) || (current->moves1 < 0 && current->moves2 < 0))
+// 	{
+// 		current->double_ops = ft_abs(current->moves1 - current->moves2);
+// 		if (current->moves1 < 0 && current->moves2 < 0)
+// 			current->double_ops = current->double_ops * (-1);
+// 		current->movef =  ft_abs(current->moves1) + ft_abs(current->moves2) -
+// 			ft_abs(current->double_ops);
+// 		return (0);
+// 	}
+// 	else
+// 	{
+// 		current->double_ops = 0;
+// 		current->movef = ft_abs(current->moves1) + ft_abs(current->moves2);
+// 		return (0);
+// 	}
+// 	*/
+// }
 
 
-int	double_operations(save_t *infos_a, save_t *infos_b, node_t *to_move)
+int	double_operations(t_save *infos_a, t_save *infos_b, t_node *to_move)
 {
 	int	temp;
 
@@ -260,7 +260,7 @@ int	double_operations(save_t *infos_a, save_t *infos_b, node_t *to_move)
 	return (0);
 }
 
-int	operation_to_a(save_t *infos, node_t *to_move)
+int	operation_to_a(t_save *infos, t_node *to_move)
 {
 	int	counter;
 
@@ -283,7 +283,7 @@ int	operation_to_a(save_t *infos, node_t *to_move)
 	return (0);
 }
 
-int	operation_to_b(save_t *infos, node_t *to_move)
+int	operation_to_b(t_save *infos, t_node *to_move)
 {
 	int	counter;
 
@@ -311,24 +311,61 @@ int	operation_to_b(save_t *infos, node_t *to_move)
 	return (0);
 }
 
-int	push_to_b(save_t *infos_a, save_t *infos_b, node_t *to_move)
+int check_biggest(t_save *infos_a, t_save *infos_b, int biggest_index)
+{
+	int	i;
+	t_node *current;
+
+	i = 0;
+	current = infos_a->head;
+	while(current)
+	{
+		if (current->index > biggest_index)
+			i++;
+		current = current->next;
+		if (current == infos_a->head)
+			break;
+	}
+	if (i == 0 || i == 5)
+		return (algo_5(infos_a,infos_b));
+	else
+	{
+		algo_5(infos_a, infos_b);
+		if (i > 2)
+			while (i != 5)
+			{
+				rotate_stack(infos_a, "ra\n");
+				i++;
+			}
+		else
+			while (i != 0)
+			{
+				reverse_rotate_stack(infos_a, "rra\n");
+				i--;
+			}
+	}
+//	printstack(infos_a, 'A');
+	return (0);
+}
+
+int	push_to_b(t_save *infos_a, t_save *infos_b, t_node *to_move)
 {
 	double_operations(infos_a, infos_b, to_move);
 	operation_to_a(infos_a, to_move);
 	operation_to_b(infos_b, to_move);
-//	if (infos_b->head != NULL)
+	// if (infos_b->head != NULL)
 //		printf("INFO_B : HEAD == |%i|\tTAIL == |%i|\n", infos_b->head->index, infos_b->tail->index);
 	push_stack(infos_a, infos_b, "pb\n");
 	return (0);
 }
 
-int	push_to_a(save_t *infos_b, save_t *infos_a)
+int	push_to_a(t_save *infos_b, t_save *infos_a)
 {
-	node_t *biggest;
+	t_node *biggest;
+	biggest = find_biggest(infos_b);
 	int	moves;
 	int counter;
 
-	biggest = find_biggest(infos_b);
 	moves = moves_to_head(infos_b ,biggest);
 	counter = ft_abs(moves);
 	while (counter != 0)
@@ -339,22 +376,25 @@ int	push_to_a(save_t *infos_b, save_t *infos_a)
 			rotate_stack(infos_b, "rb\n");
 		counter--;
 	}
-	while(infos_b->head != NULL)
+	check_biggest(infos_a, infos_b, biggest->index);
+	while (infos_b->head != NULL)
+	{
+		while (infos_a->tail->index > infos_b->head->index
+			&& infos_a->tail->index < infos_a->head->index)
+			reverse_rotate_stack(infos_a, "rra\n");
 		push_stack(infos_b, infos_a, "pa\n");
+	}
 	return (0);
 }
 
-int	algo_big(save_t *infos_a, save_t *infos_b)
+int	algo_big(t_save *infos_a, t_save *infos_b)
 {
-	node_t	*current;
-	int	smallest;
-	int	doubles_op;
+	t_node	*current;
 
-	while(infos_a->head != NULL)
+	while(infos_a->size > 5)
 	{
 		current = infos_a->head;
-		doubles_op = 0;
-		while (current)
+		while (infos_a)
 		{
 			current->moves1 = moves_to_head(infos_a, current);
 			current->moves2 = moves_in_b(infos_b, current);
@@ -374,6 +414,5 @@ int	algo_big(save_t *infos_a, save_t *infos_b)
 	}
 	push_to_a(infos_b, infos_a);
 
-//	printstack(infos_a, 'A');
 	return (0);
 }

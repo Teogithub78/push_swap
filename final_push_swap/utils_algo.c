@@ -6,17 +6,16 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 12:44:42 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_doubles(save_t *infos_a)
+int	check_doubles(t_save *infos_a)
 {
-	node_t *current;
-	node_t *save;
-	int temp_val;
+	t_node *current;
+	t_node *save;
 
 	save = infos_a->head;
 	current = save;
@@ -37,10 +36,10 @@ int	check_doubles(save_t *infos_a)
 	return(0);
 }
 
-int	count_numbers_list(save_t *infos_a)
+int	count_numbers_list(t_save *infos_a)
 {
 	int i;
-	node_t	*stack_a;
+	t_node	*stack_a;
 
 	infos_a->size = 0;
 	i = 0;
@@ -61,12 +60,12 @@ int	count_numbers_list(save_t *infos_a)
 	return (i);
 }
 
-int	index_final(save_t *infos_a, int size_chain)
+int	index_final(t_save *infos_a, int size_chain)
 {
 	int	i;
 	int	temp;
-	node_t	*temp_addr;
-	node_t	*stack_a;
+	t_node	*temp_addr;
+	t_node	*stack_a;
 
 	i = 1;
 	stack_a = infos_a->head;
@@ -92,10 +91,10 @@ int	index_final(save_t *infos_a, int size_chain)
 	return (0);
 }
 
-int	check_sorted(save_t *infos_a)
+int	check_sorted(t_save *infos_a)
 {
 	int i;
-	node_t *current;
+	t_node *current;
 
 	current = infos_a->head;
 	i = 1;

@@ -6,16 +6,16 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/19 16:23:08 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 18:21:23 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	printstack(save_t *infos, char c)
+int	printstack(t_save *infos, char c)
 {
 	int i;
-	node_t *stack;
+	t_node *stack;
 
 	i = 0;
 	stack = infos->head;
@@ -25,7 +25,6 @@ int	printstack(save_t *infos, char c)
 	printf("\t ***************\n");
 	printf("\t *** STACK %c ***\n", c);
 	printf("\t ***************\n");
-	printf("PROUT\n");
 	if (stack == NULL)
 	{
 		printf("OOOOOOOOOOOOOOOO\n");
@@ -53,11 +52,11 @@ int	printstack(save_t *infos, char c)
 	return (0);
 }
 
-int	printstacks(save_t *infos_a, save_t *infos_b)
+int	printstacks(t_save *infos_a, t_save *infos_b)
 {
 	int i;
-	node_t *stack_a;
-	node_t	*stack_b;
+	t_node *stack_a;
+	t_node	*stack_b;
 
 	i = 0;
 	stack_a = infos_a->head;
@@ -102,8 +101,8 @@ int	ft_print_ERROR()
 
 int	main(int ac, char **av)
 {
-	save_t list_a;
-	save_t list_b;
+	t_save list_a;
+	t_save list_b;
 	int i;
 
 	if (check_arg(ac, av) == ERROR)

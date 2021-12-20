@@ -292,7 +292,7 @@ char	*ft_super_join(int ac, char **av)
 	return (save);
 }
 /*
-int	ft_atoi_plus(node_t *list, char *str)
+int	ft_atoi_plus(t_node *list, char *str)
 {
 	long int li;
 	long int	retour;

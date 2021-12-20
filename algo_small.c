@@ -6,13 +6,13 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:51:29 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 12:40:25 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	algo_3_next(save_t *infos_a, node_t *current)
+static int	algo_3_next(t_save *infos_a, t_node *current)
 {
 	if (current->val <= infos_a->tail->val)
 	{
@@ -30,9 +30,9 @@ static int	algo_3_next(save_t *infos_a, node_t *current)
 }
 
 
-static int	algo_3(save_t *infos_a)
+static int	algo_3(t_save *infos_a)
 {
-	node_t	*current;
+	t_node	*current;
 
 	current = infos_a->head;
 	if (current->val >= current->next->val)
@@ -57,7 +57,7 @@ static int	algo_3(save_t *infos_a)
 	return(0);
 }
 
-int	algo_4(save_t *infos_a, save_t *infos_b)
+int	algo_4(t_save *infos_a, t_save *infos_b)
 {
 	push_stack(infos_a, infos_b, "pb\n");
 	algo_3(infos_a);
@@ -81,7 +81,7 @@ int	algo_4(save_t *infos_a, save_t *infos_b)
 	return (0);
 }
 
-int	algo_5_next(save_t *infos_a, save_t *infos_b)
+int	algo_5_next(t_save *infos_a, t_save *infos_b)
 {
 	if (infos_b->head->index == 1 || infos_b->head->next->index == 1)
 	{
@@ -106,7 +106,7 @@ int	algo_5_next(save_t *infos_a, save_t *infos_b)
 	}
 }
 
-int	algo_5(save_t *infos_a, save_t *infos_b)
+int	algo_5(t_save *infos_a, t_save *infos_b)
 {
 	push_stack(infos_a, infos_b, "pb\n");
 	push_stack(infos_a, infos_b, "pb\n");
@@ -117,9 +117,9 @@ int	algo_5(save_t *infos_a, save_t *infos_b)
 	return (0);
 }
 
-int	algo_to_5(save_t *infos_a, save_t *infos_b, int size_stack)
+int	algo_to_5(t_save *infos_a, t_save *infos_b, int size_stack)
 {
-	node_t	*current;
+	t_node	*current;
 
 	current = infos_a->head;
 	if (size_stack == 1)

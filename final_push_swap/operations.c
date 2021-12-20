@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 12:13:46 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/16 11:09:19 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 /*
-int		push_stack (save_t *infos_a, save_t *infos_b)
+int		push_stack (t_save *infos_a, t_save *infos_b)
 {
 
 	infos_a->tail->next = infos_a->head->next;
@@ -55,9 +55,9 @@ int		push_stack (save_t *infos_a, save_t *infos_b)
 }
 */
 /*
-int		push_stack (save_t *source, save_t *dest, char *op)
+int		push_stack (t_save *source, t_save *dest, char *op)
 {
-	node_t	*s1;
+	t_node	*s1;
 
 	s1 = source->head;
 	if (source->head == NULL)
@@ -102,7 +102,7 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 	return (0);
 }
 */
-int		push_stack_dest(save_t *dest, node_t *to_move)
+int		push_stack_dest(t_save *dest, t_node *to_move)
 {
 	if (dest->head == NULL)
 	{
@@ -125,9 +125,9 @@ int		push_stack_dest(save_t *dest, node_t *to_move)
 	return (0);
 }
 
-int		push_stack (save_t *source, save_t *dest, char *op)
+int		push_stack (t_save *source, t_save *dest, char *op)
 {
-	node_t	*to_move;
+	t_node	*to_move;
 
 	to_move = source->head;
 	if (source->head == NULL)
@@ -150,9 +150,8 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 	return (0);
 }
 
-int		swap_stack(save_t *infostack, char *op)
+int		swap_stack(t_save *infostack, char *op)
 {
-	node_t	*new_head;
 	int	t_val;
 	int t_index;
 
@@ -180,10 +179,10 @@ int		swap_stack(save_t *infostack, char *op)
 	return (0);
 }
 /*
-save_t		*swap_stack(save_t *infostack)
+t_save		*swap_stack(t_save *infostack)
 {
-	node_t	*stack1;
-	node_t	*stack2;
+	t_node	*stack1;
+	t_node	*stack2;
 	stack1 = infostack->head;
 	stack2 = stack1->next;
 	stack1->next = stack2->next;
@@ -196,9 +195,9 @@ save_t		*swap_stack(save_t *infostack)
 	return(infostack);
 }
 */
-int		rotate_stack(save_t *infostack, char *op)
+int		rotate_stack(t_save *infostack, char *op)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infostack->head;
 	infostack->head = infostack->head->next;
@@ -208,9 +207,9 @@ int		rotate_stack(save_t *infostack, char *op)
 	return(0);
 }
 
-int		reverse_rotate_stack(save_t *infostack, char *op)
+int		reverse_rotate_stack(t_save *infostack, char *op)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infostack->tail;
 	infostack->tail = infostack->tail->prev;

@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:14:40 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 12:06:11 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_super_join(int ac, char **av)
 	return (str);
 }
 
-int	ft_atoi_plus(node_t *list, char *str)
+int	ft_atoi_plus(t_node *list, char *str)
 {
 	long int	retour;
 	int i;
@@ -78,7 +78,7 @@ int	ft_atoi_plus(node_t *list, char *str)
 	return (0);
 }
 
-int	manage_arg(int ac, char **av, save_t *infos_a)
+int	manage_arg(int ac, char **av, t_save *infos_a)
 {
 	char	*str;
 	char	**tab_split;

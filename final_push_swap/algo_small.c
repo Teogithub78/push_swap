@@ -6,13 +6,13 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:51:29 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/10 12:40:25 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 19:01:09 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	algo_3_next(save_t *infos_a, node_t *current)
+static int	algo_3_next(t_save *infos_a, t_node *current)
 {
 	if (current->val <= infos_a->tail->val)
 	{
@@ -30,9 +30,9 @@ static int	algo_3_next(save_t *infos_a, node_t *current)
 }
 
 
-static int	algo_3(save_t *infos_a)
+int	algo_3(t_save *infos_a)
 {
-	node_t	*current;
+	t_node	*current;
 
 	current = infos_a->head;
 	if (current->val >= current->next->val)
@@ -57,7 +57,7 @@ static int	algo_3(save_t *infos_a)
 	return(0);
 }
 
-int	algo_4(save_t *infos_a, save_t *infos_b)
+int	algo_4(t_save *infos_a, t_save *infos_b)
 {
 	push_stack(infos_a, infos_b, "pb\n");
 	algo_3(infos_a);
@@ -81,45 +81,67 @@ int	algo_4(save_t *infos_a, save_t *infos_b)
 	return (0);
 }
 
-int	algo_5_next(save_t *infos_a, save_t *infos_b)
+int	algo_5_next(t_save *infos_a, t_save *infos_b, int smallest, int biggest)
 {
-	if (infos_b->head->index == 1 || infos_b->head->next->index == 1)
+	int	i;
+
+	i = 2;
+
+	if (infos_b->head->index == smallest || infos_b->head->next->index == smallest)
 	{
-		if (infos_b->tail->index == 1)
+		if (infos_b->head->next->index == smallest)
 			swap_stack(infos_b, "sb\n");
 		push_stack(infos_b, infos_a, "pa\n");
+		i--;
 	}
 
-	while (infos_b->head != NULL)
+	if (infos_b->head->index == biggest || infos_b->head->next->index == biggest)
 	{
-		if (infos_b->head->val > infos_a->tail->val)
-		{
-			push_stack(infos_b, infos_a, "pa\n");
+		if (infos_b->head->next->index == biggest)
+			swap_stack(infos_b, "sb\n");
+		push_stack(infos_b, infos_a, "pa\n");
+		rotate_stack(infos_a, "ra\n");
+		i--;
+	}
+
+	while (i != 0)
+	{
+
+		if (infos_b->head->index > infos_a->tail->index)
 			rotate_stack(infos_a, "ra\n");
-		}
 		else
 		{
 			while(infos_b->head->index > infos_a->head->index)
 				rotate_stack(infos_a, "ra\n");
-			push_stack(infos_b, infos_a, "pa\n");
 		}
+		push_stack(infos_b, infos_a, "pa\n");
+		i--;
 	}
+	return(0);
 }
 
-int	algo_5(save_t *infos_a, save_t *infos_b)
+int	algo_5(t_save *infos_a, t_save *infos_b)
 {
+	t_node 	*smallest;
+	t_node *biggest;
+	smallest = find_smallest(infos_a);
+	biggest = find_biggest(infos_a);
+
 	push_stack(infos_a, infos_b, "pb\n");
 	push_stack(infos_a, infos_b, "pb\n");
 	algo_3(infos_a);
-	algo_5_next(infos_a, infos_b);
-	while(infos_a->head->index != 1)
+//	printstack(infos_a, 'A');
+	algo_5_next(infos_a, infos_b, smallest->index, biggest->index);
+	smallest = find_smallest(infos_a);
+	while(infos_a->head->index != smallest->index)
 		rotate_stack(infos_a, "ra\n");
+//	printstack(infos_a, 'A');
 	return (0);
 }
 
-int	algo_to_5(save_t *infos_a, save_t *infos_b, int size_stack)
+int	algo_to_5(t_save *infos_a, t_save *infos_b, int size_stack)
 {
-	node_t	*current;
+	t_node	*current;
 
 	current = infos_a->head;
 	if (size_stack == 1)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_algo.c                                         :+:      :+:    :+:   */
+/*   old_big_algo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 14:46:01 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/13 15:57:51 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	chunk_size(int	size list)
 }
 */
 
-int	find_smallest(save_t *infos, int restriction)
+int	find_smallest(t_save *infos, int restriction)
 {
 	int	index_ret;
-	node_t	*current;
-	node_t	*save;
+	t_node	*current;
+	t_node	*save;
 
 	save = infos->head;
 	index_ret = infos->head->index;
@@ -44,9 +44,9 @@ int	find_smallest(save_t *infos, int restriction)
 	return (index_ret);
 }
 
-int	nb_moves(save_t *infos, int index)
+int	nb_moves(t_save *infos, int index)
 {
-	node_t	*current;
+	t_node	*current;
 	int i;
 
 	if (infos->head == NULL)
@@ -66,9 +66,9 @@ int	nb_moves(save_t *infos, int index)
 		return (i);
 }
 
-int	nb_moves_in_b(save_t *infos_b, int index_tm)
+int	nb_moves_in_b(t_save *infos_b, int index_tm)
 {
-	node_t *current;
+	t_node *current;
 	int	biggest;
 	int	counter;
 
@@ -88,7 +88,7 @@ int	nb_moves_in_b(save_t *infos_b, int index_tm)
 	return (counter);
 }
 
-int	put_to_head(save_t *infos, int moves)
+int	put_to_head(t_save *infos, int moves)
 {
 	int	i;
 	int	j;
@@ -108,7 +108,7 @@ int	put_to_head(save_t *infos, int moves)
 	return (0);
 }
 
-int	put_to_head_b(save_t *infos, int moves)
+int	put_to_head_b(t_save *infos, int moves)
 {
 	int	i;
 	int	j;
@@ -128,9 +128,9 @@ int	put_to_head_b(save_t *infos, int moves)
 	return (0);
 }
 
-int	biggest_index(save_t *infos)
+int	biggest_index(t_save *infos)
 {
-	node_t	*current;
+	t_node	*current;
 	int	biggest_indx;
 
 	if (infos->head == NULL)
@@ -150,9 +150,9 @@ int	biggest_index(save_t *infos)
 	return (biggest_indx);
 }
 
-int	smallest_index(save_t *infos)
+int	smallest_index(t_save *infos)
 {
-	node_t	*current;
+	t_node	*current;
 	int	index_min;
 
 	if (infos->head == NULL)
@@ -172,10 +172,10 @@ int	smallest_index(save_t *infos)
 	return (index_min);
 }
 
-int push_to_b(save_t * infos_a, save_t* infos_b)
+int push_to_b(t_save * infos_a, t_save* infos_b)
 {
 
-	node_t *current;
+	t_node *current;
 	int	biggest;
 	int	counter;
 
@@ -217,9 +217,9 @@ int push_to_b(save_t * infos_a, save_t* infos_b)
 	*/
 }
 
-int	find_from_top(save_t *infos, int chunk)
+int	find_from_top(t_save *infos, int chunk)
 {
-	node_t *current;
+	t_node *current;
 
 	current = infos->head;
 	if (infos->head == NULL)
@@ -236,9 +236,9 @@ int	find_from_top(save_t *infos, int chunk)
 	return (ERROR);
 }
 
-int	find_from_bottom(save_t *infos, int chunk)
+int	find_from_bottom(t_save *infos, int chunk)
 {
-	node_t *current;
+	t_node *current;
 
 	current = infos->tail;
 	if (infos->tail == NULL)
@@ -255,7 +255,7 @@ int	find_from_bottom(save_t *infos, int chunk)
 	return (ERROR);
 }
 
-// int	find_from_index_top(save_t *infos, int index)
+// int	find_from_index_top(t_save *infos, int index)
 // {
 // 	int	i;
 
@@ -263,7 +263,7 @@ int	find_from_bottom(save_t *infos, int chunk)
 
 // }
 /*
-int	super_nb_moves(save_t *infos_a, save_t *infos_b, int chunk)
+int	super_nb_moves(t_save *infos_a, t_save *infos_b, int chunk)
 {
 	int *tableau;
 	int	counter;
@@ -278,7 +278,7 @@ int	super_nb_moves(save_t *infos_a, save_t *infos_b, int chunk)
 */
 
 
-int	empty_chunk(save_t *infos_a, save_t *infos_b, int chunk)
+int	empty_chunk(t_save *infos_a, t_save *infos_b, int chunk)
 {
 	int index_first;
 	int moves_first;
@@ -312,7 +312,7 @@ int	empty_chunk(save_t *infos_a, save_t *infos_b, int chunk)
 	return (0);
 }
 
-int	push_to_a(save_t *infos_b, save_t *infos_a)
+int	push_to_a(t_save *infos_b, t_save *infos_a)
 {
 	int	index_max;
 
@@ -338,7 +338,7 @@ int	push_to_a(save_t *infos_b, save_t *infos_a)
 	return (0);
 }
 
-int		big_algo(save_t *infos_a, save_t *infos_b)
+int		big_algo(t_save *infos_a, t_save *infos_b)
 {
 	int i;
 	int chunk;

@@ -31,9 +31,9 @@ int	ft_putstr(char *str)
 	return (0);
 }
 
-int	free_stack(save_t *infos)
+int	free_stack(t_save *infos)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infos->head;
 	//printf("\nADDRESSE QUON FREE = \t|%p|", temp);
@@ -48,9 +48,9 @@ int	free_stack(save_t *infos)
 	return (0);
 }
 
-int		rotate_stack(save_t *infostack, char *op)
+int		rotate_stack(t_save *infostack, char *op)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infostack->head;
 	infostack->head = infostack->head->next;
@@ -60,9 +60,9 @@ int		rotate_stack(save_t *infostack, char *op)
 	return(0);
 }
 
-int		reverse_rotate_stack(save_t *infostack, char *op)
+int		reverse_rotate_stack(t_save *infostack, char *op)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infostack->tail;
 	infostack->tail = infostack->tail->prev;
@@ -74,10 +74,10 @@ int		reverse_rotate_stack(save_t *infostack, char *op)
 }
 
 
-save_t	*list_init_a(save_t *infos_a, node_t *stack_a)
+t_save	*list_init_a(t_save *infos_a, t_node *stack_a)
 {
-	infos_a = (save_t *)malloc(sizeof(save_t));
-	stack_a = (node_t *)malloc(sizeof(node_t));
+	infos_a = (t_save *)malloc(sizeof(t_save));
+	stack_a = (t_node *)malloc(sizeof(t_node));
 	if (!infos_a || !stack_a)
 		return (NULL);
 		infos_a->head = stack_a;
@@ -87,9 +87,9 @@ save_t	*list_init_a(save_t *infos_a, node_t *stack_a)
 		return (infos_a);
 }
 
-save_t	*list_init_b(save_t *infos_b)
+t_save	*list_init_b(t_save *infos_b)
 {
-	infos_b = (save_t *)malloc(sizeof(save_t));
+	infos_b = (t_save *)malloc(sizeof(t_save));
 	if (!infos_b)
 		return (NULL);
 	infos_b->head = NULL;
@@ -97,11 +97,11 @@ save_t	*list_init_b(save_t *infos_b)
 	return(infos_b);
 }
 
-int		list_add(save_t *infostack, int value)
+int		list_add(t_save *infostack, int value)
 {
-	node_t	*new;
+	t_node	*new;
 
-	new = (node_t *)malloc(sizeof(node_t));
+	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->val = value;
@@ -113,10 +113,10 @@ int		list_add(save_t *infostack, int value)
 	return(0);
 }
 
-save_t		*list_setup(int ac, char **av)
+t_save		*list_setup(int ac, char **av)
 {
-	node_t	*stack_a;
-	save_t	*infos_a;
+	t_node	*stack_a;
+	t_save	*infos_a;
 	int	i;
 
 	i = 1;
@@ -130,9 +130,9 @@ save_t		*list_setup(int ac, char **av)
 	return (infos_a);
 }
 
-int		switch_stack(save_t *infostack, char *op)
+int		switch_stack(t_save *infostack, char *op)
 {
-	node_t	*new_head;
+	t_node	*new_head;
 
 	if(infostack->head == infostack->tail || infostack->head == NULL || infostack->tail == NULL)
 		return(1);
@@ -149,10 +149,10 @@ int		switch_stack(save_t *infostack, char *op)
 }
 
 
-int	printstack(save_t *infos_a, char stack)
+int	printstack(t_save *infos_a, char stack)
 {
 	int i;
-	node_t *stack_a;
+	t_node *stack_a;
 
 	i = 0;
 	stack_a = infos_a->head;
@@ -169,9 +169,9 @@ int	printstack(save_t *infos_a, char stack)
 	return (0);
 }
 /*
-int		push_stack (save_t *source, save_t *dest, char *op)
+int		push_stack (t_save *source, t_save *dest, char *op)
 {
-	node_t	*s1;
+	t_node	*s1;
 
 	s1 = source->head;
 	if (source->head == NULL)
@@ -191,7 +191,7 @@ int		push_stack (save_t *source, save_t *dest, char *op)
 	return (0);
 }
 */
-int	double_rotation(save_t *infos_a, save_t *infos_b)
+int	double_rotation(t_save *infos_a, t_save *infos_b)
 {
 	rotate_stack(infos_a, "");
 	rotate_stack(infos_b, "");
@@ -199,7 +199,7 @@ int	double_rotation(save_t *infos_a, save_t *infos_b)
 	return (0);
 }
 
-int	double_reverse_rot(save_t *infos_a, save_t *infos_b)
+int	double_reverse_rot(t_save *infos_a, t_save *infos_b)
 {
 	reverse_rotate_stack(infos_a, "");
 	reverse_rotate_stack(infos_b, "");
@@ -207,7 +207,7 @@ int	double_reverse_rot(save_t *infos_a, save_t *infos_b)
 	return(0);
 }
 
-int	double_switch(save_t *infos_a, save_t *infos_b)
+int	double_switch(t_save *infos_a, t_save *infos_b)
 {
 	if(infos_a->head == infos_a->tail || infos_a->head == NULL || infos_a->tail == NULL)
 		return(0);
@@ -218,10 +218,10 @@ int	double_switch(save_t *infos_a, save_t *infos_b)
 	ft_putstr("ss\n");
 }
 /*
-int	size_list(save_t *infos_a)
+int	size_list(t_save *infos_a)
 {
 	int	i;
-	node_t	*parser;
+	t_node	*parser;
 
 	parser = infos_a->head;
 	i = 1;
@@ -233,10 +233,10 @@ int	size_list(save_t *infos_a)
 	return (i);
 }
 
-int	index_putter(save_t *infos_a)
+int	index_putter(t_save *infos_a)
 {
-	node_t	*l_parser;
-	node_t	*l_static;
+	t_node	*l_parser;
+	t_node	*l_static;
 	int index;
 	int i;
 	int	count;
@@ -263,8 +263,8 @@ int	index_putter(save_t *infos_a)
 */
 int	main(int ac, char **av)
 {
-	save_t	*infos_a;
-	save_t	*infos_b;
+	t_save	*infos_a;
+	t_save	*infos_b;
 
 	infos_a = list_setup(ac, av);
 	infos_b = list_init_b(infos_b);

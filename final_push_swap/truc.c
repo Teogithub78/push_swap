@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   truc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:29:21 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/11/20 19:06:55 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:11:10 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct node
 	int index;
     struct node * next;
 	struct node	* prev;
-} node_t;
+} t_node;
 
 typedef struct commejeveux
 {
@@ -57,8 +57,8 @@ int	push_swap(int ac, char **av)
 	if (ac < 2)
 		return (0);
 
-	node_t	*head = NULL;
-	head = (node_t*) malloc(sizeof(node_t));
+	t_node	*head = NULL;
+	head = (t_node*) malloc(sizeof(t_node));
 	if (head == NULL)
 		return (0);
 	head->val = ft_atoi(av[i]);
@@ -66,16 +66,16 @@ int	push_swap(int ac, char **av)
 	head->prev = NULL;
 	/*if (ac > 2)
 	{
-		head->next = (node_t *)malloc(sizeof(node_t));
+		head->next = (t_node *)malloc(sizeof(t_node));
 		if (!next)
 			return (NULL);
 	}
 	*/
-	node_t	*current = head;
+	t_node	*current = head;
 	while (++i < ac)
 	{
 
-		current->next = (node_t *)malloc(sizeof(node_t));
+		current->next = (t_node *)malloc(sizeof(t_node));
 		if (current->next == NULL)
 			return (0);
 		current->next->val = ft_atoi(av[i]);

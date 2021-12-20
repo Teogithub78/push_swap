@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   old_push_swap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:29:21 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/01 14:49:24 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:53 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_atoi(char *str)
 	return (retour);
 }
 
-save_t	*list_init_a(save_t *infos_a, node_t *stack_a)
+t_save	*list_init_a(t_save *infos_a, t_node *stack_a)
 {
-	infos_a = (save_t *)malloc(sizeof(save_t));
-	stack_a = (node_t *)malloc(sizeof(node_t));
+	infos_a = (t_save *)malloc(sizeof(t_save));
+	stack_a = (t_node *)malloc(sizeof(t_node));
 	if (!infos_a || !stack_a)
 		return (NULL);
 		infos_a->head = stack_a;
@@ -44,9 +44,9 @@ save_t	*list_init_a(save_t *infos_a, node_t *stack_a)
 		return (infos_a);
 }
 
-save_t	*list_init_b(save_t *infos_b)
+t_save	*list_init_b(t_save *infos_b)
 {
-	infos_b = (save_t *)malloc(sizeof(save_t));
+	infos_b = (t_save *)malloc(sizeof(t_save));
 	if (!infos_b)
 		return (NULL);
 	infos_b->head = NULL;
@@ -54,11 +54,11 @@ save_t	*list_init_b(save_t *infos_b)
 	return(infos_b);
 }
 
-int		list_add(save_t *infostack, int value)
+int		list_add(t_save *infostack, int value)
 {
-	node_t	*new;
+	t_node	*new;
 
-	new = (node_t *)malloc(sizeof(node_t));
+	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (NULL);
 	new->val = value;
@@ -72,8 +72,8 @@ int		list_add(save_t *infostack, int value)
 
 int		list_setup(int ac, char **av)
 {
-	node_t	*stack_a;
-	save_t	*infos_a;
+	t_node	*stack_a;
+	t_save	*infos_a;
 	int	i;
 
 	i = 0;
@@ -87,9 +87,9 @@ int		list_setup(int ac, char **av)
 	return (0);
 }
 
-int		reverse_stack(save_t *infostack)
+int		reverse_stack(t_save *infostack)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infostack->head;
 	infostack->head = infostack->head->next;
@@ -98,11 +98,11 @@ int		reverse_stack(save_t *infostack)
 	return(0);
 }
 
-int		push_stack (save_t *infos_a, save_t *infos_b)
+int		push_stack (t_save *infos_a, t_save *infos_b)
 {
 
 	//if (infostacks->head_b == NULL)
-	//	stack_b = (node_t *)malloc(sizeof(node_t));
+	//	stack_b = (t_node *)malloc(sizeof(t_node));
 	//if (!stack_b)
 	//	return (0);
 
@@ -144,10 +144,10 @@ int		push_stack (save_t *infos_a, save_t *infos_b)
 	return (0);
 }
 
-save_t		*switch_stack(save_t *infostack)
+t_save		*switch_stack(t_save *infostack)
 {
-	node_t	*stack1;
-	node_t	*stack2;
+	t_node	*stack1;
+	t_node	*stack2;
 	stack1 = infostack->head;
 	stack2 = stack1->next;
 	write(1, "\nA\n", 3);
@@ -167,9 +167,9 @@ save_t		*switch_stack(save_t *infostack)
 }
 
 
-int	free_stack(save_t *infos)
+int	free_stack(t_save *infos)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	temp = infos->head;
 	printf("\nADDRESSE QUON FREE = \t|%p|", temp);
@@ -184,7 +184,7 @@ int	free_stack(save_t *infos)
 	return (0);
 }
 
-int	printstacks(node_t *stack_a, node_t *stack_b, save_t *infos_a, save_t *infos_b)
+int	printstacks(t_node *stack_a, t_node *stack_b, t_save *infos_a, t_save *infos_b)
 {
 	int i;
 
@@ -222,14 +222,14 @@ int	printstacks(node_t *stack_a, node_t *stack_b, save_t *infos_a, save_t *infos
 	return (0);
 }
 
-//int	free_structs(node_t stack_a, node_t stack b, save_t infostacks)
+//int	free_structs(t_node stack_a, t_node stack b, t_save infostacks)
 /*
 int	push_swap(int ac, char **av)
 {
-	save_t	*infos_a;
-	save_t	*infos_b;
-	node_t	*stack_a;
-	node_t	*stack_b;
+	t_save	*infos_a;
+	t_save	*infos_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 	int		i;
 
 	i = 1;
@@ -244,21 +244,21 @@ int	push_swap(int ac, char **av)
 	infos_b = list_init_b(infos_b);
 	/*
 
-	infos_a = (save_t *)malloc(sizeof(save_t));
+	infos_a = (t_save *)malloc(sizeof(t_save));
 	write(1, "\n$\n", 3);
 	if (!infos_a)
 		return (0);
 
-	infos_b = (save_t *)malloc(sizeof(save_t));
+	infos_b = (t_save *)malloc(sizeof(t_save));
 	write(1, "\n$\n", 3);
 	if (!infos_b)
 		return (0);
 
-	stack_a = (node_t *)malloc(sizeof(node_t));
+	stack_a = (t_node *)malloc(sizeof(t_node));
 	write(1, "\n$\n", 3);
 	if (!stack_a)
 		return (0);
-	//stack_b = (node_t *)malloc(sizeof(node_t));
+	//stack_b = (t_node *)malloc(sizeof(t_node));
 	//if (!stack_b)
 	//	return (0);
 	//stack_b->next = NULL;
@@ -270,7 +270,7 @@ int	push_swap(int ac, char **av)
 	i++;
 	while (i < ac)
 	{
-		next = (node_t *)malloc(sizeof(node_t));
+		next = (t_node *)malloc(sizeof(t_node));
 		write(1, "\n5555\n", 6);
 		if (!next)
 			return (NULL);
@@ -303,10 +303,10 @@ int	push_swap(int ac, char **av)
 */
 int	push_swap(int ac, char **av)
 {
-	save_t	*infos_a;
-	save_t	*infos_b;
-	node_t	*stack_a;
-	node_t	*stack_b;
+	t_save	*infos_a;
+	t_save	*infos_b;
+	t_node	*stack_a;
+	t_node	*stack_b;
 	int		i;
 
 	i = 1;

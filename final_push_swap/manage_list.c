@@ -6,15 +6,15 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 18:29:49 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/02 14:28:29 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:11:10 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include "push_swap.h"
 
-int	print_list(node_t *head)
+int	print_list(t_node *head)
 {
-	node_t	*current;
+	t_node	*current;
 
 	current = head;
 
@@ -31,7 +31,7 @@ int	print_list(node_t *head)
 	printf("\t|STOP|\n\n");
 }
 
-node_t	*create_list(cjv_t *prout, int ac, chaar **av)
+t_node	*create_list(cjv_t *prout, int ac, chaar **av)
 {
 	int	i;
 	cjv_t *prout;
@@ -45,8 +45,8 @@ node_t	*create_list(cjv_t *prout, int ac, chaar **av)
 	if (ac < 2)
 		return (0);
 
-	node_t	*head = NULL;
-	head = (node_t*) malloc(sizeof(node_t));
+	t_node	*head = NULL;
+	head = (t_node*) malloc(sizeof(t_node));
 	if (head == NULL)
 		return (0);
 	head->val = ft_atoi(av[i]);
@@ -54,16 +54,16 @@ node_t	*create_list(cjv_t *prout, int ac, chaar **av)
 	head->prev = NULL;
 	/*if (ac > 2)
 	{
-		head->next = (node_t *)malloc(sizeof(node_t));
+		head->next = (t_node *)malloc(sizeof(t_node));
 		if (!next)
 			return (NULL);
 	}
 	*/
-	node_t	*current = head;
+	t_node	*current = head;
 	while (++i < ac)
 	{
 
-		current->next = (node_t *)malloc(sizeof(node_t));
+		current->next = (t_node *)malloc(sizeof(t_node));
 		if (current->next == NULL)
 			return (0);
 		current->next->val = ft_atoi(av[i]);
@@ -121,19 +121,19 @@ int	push_swap(int ac, char **av)
 	if (ac < 2)
 		return (0);
 
-	node_t	*head = NULL;
-	head = (node_t*) malloc(sizeof(node_t));
+	t_node	*head = NULL;
+	head = (t_node*) malloc(sizeof(t_node));
 	if (head == NULL)
 		return (0);
 	head->val = ft_atoi(av[i]);
 	head->index = i;
 	head->prev = NULL;
 
-	node_t	*current = head;
+	t_node	*current = head;
 	while (++i < ac)
 	{
 
-		current->next = (node_t *)malloc(sizeof(node_t));
+		current->next = (t_node *)malloc(sizeof(t_node));
 		if (current->next == NULL)
 			return (0);
 		current->next->val = ft_atoi(av[i]);

@@ -6,13 +6,13 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/16 10:46:55 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 /*
-int	ft_print_lista(save_t *infos_a, node_t *stack_a)
+int	ft_print_lista(t_save *infos_a, t_node *stack_a)
 {
 	printf("\n*************INFOLIST A**************\n");
 	printf("HEAD DANS INFOS_A == \t|%p|\n", infos_a->head);
@@ -25,10 +25,10 @@ int	ft_print_lista(save_t *infos_a, node_t *stack_a)
 	return(0);
 }
 */
-int		list_init_a(save_t *infos_a, node_t *stack_a)
+int		list_init_a(t_save *infos_a, t_node *stack_a)
 {
-	infos_a = (save_t *)malloc(sizeof(save_t));
-	stack_a = (node_t *)malloc(sizeof(node_t));
+	infos_a = (t_save *)malloc(sizeof(t_save));
+	stack_a = (t_node *)malloc(sizeof(t_node));
 	if (!infos_a || !stack_a)
 		return (ERROR);
 	infos_a->head = stack_a;
@@ -38,7 +38,7 @@ int		list_init_a(save_t *infos_a, node_t *stack_a)
 	return (0);
 }
 
-int	info_init(save_t *infos)
+int	info_init(t_save *infos)
 {
 	infos->head = NULL;
 	infos->tail = NULL;
@@ -46,7 +46,7 @@ int	info_init(save_t *infos)
 	return(0);
 }
 
-int	list_init_value(node_t *new)
+int	list_init_value(t_node *new)
 {
 	new->moves1 = 0;
 	new->moves2 = 0;
@@ -55,11 +55,11 @@ int	list_init_value(node_t *new)
 	return (0);
 }
 
-int		list_add(save_t *infostack, char *str)
+int		list_add(t_save *infostack, char *str)
 {
-	node_t	*new;
+	t_node	*new;
 
-	new = (node_t *)malloc(sizeof(node_t));
+	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
 		return (ERROR);
 	if (ft_atoi_plus(new, str) == ERROR)
@@ -82,9 +82,9 @@ int		list_add(save_t *infostack, char *str)
 	return(0);
 }
 
-int	free_list(save_t *infos)
+int	free_list(t_save *infos)
 {
-	node_t	*temp;
+	t_node	*temp;
 
 	if (infos->head == NULL || infos->tail == NULL)
 		return(ERROR);
@@ -107,7 +107,7 @@ int	free_list(save_t *infos)
 }
 
 
-int		list_setup_a(char **tab_split, save_t *infos_a)
+int		list_setup_a(char **tab_split, t_save *infos_a)
 {
 	int	i;
 
