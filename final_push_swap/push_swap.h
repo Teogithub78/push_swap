@@ -54,6 +54,7 @@ int		swap_stack(t_save *infostack, char *op);
 int		rotate_stack(t_save *infostack, char *op);
 int		reverse_rotate_stack(t_save *infostack, char *op);
 t_node	*find_biggest(t_save *infos);
+int	moves_to_head(t_save *infos, t_node *current);
 int		count_numbers_list(t_save *infos_a);
 int	index_final(t_save *infos_a, int size_chain);
 int	algo_to_5(t_save *infos_a, t_save *infos_b, int	size_stack);

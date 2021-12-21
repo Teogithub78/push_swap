@@ -106,14 +106,10 @@ int	algo_5_next(t_save *infos_a, t_save *infos_b, int smallest, int biggest)
 
 	while (i != 0)
 	{
-
-		if (infos_b->head->index > infos_a->tail->index)
+		if (i == 2 && infos_b->head->index > infos_b->head->next->index)
+			swap_stack(infos_b, "sb\n");
+		while(infos_b->head->index > infos_a->head->index)
 			rotate_stack(infos_a, "ra\n");
-		else
-		{
-			while(infos_b->head->index > infos_a->head->index)
-				rotate_stack(infos_a, "ra\n");
-		}
 		push_stack(infos_b, infos_a, "pa\n");
 		i--;
 	}
@@ -124,18 +120,29 @@ int	algo_5(t_save *infos_a, t_save *infos_b)
 {
 	t_node 	*smallest;
 	t_node *biggest;
+	int	counter;
 	smallest = find_smallest(infos_a);
 	biggest = find_biggest(infos_a);
 
 	push_stack(infos_a, infos_b, "pb\n");
 	push_stack(infos_a, infos_b, "pb\n");
 	algo_3(infos_a);
-//	printstack(infos_a, 'A');
 	algo_5_next(infos_a, infos_b, smallest->index, biggest->index);
 	smallest = find_smallest(infos_a);
-	while(infos_a->head->index != smallest->index)
-		rotate_stack(infos_a, "ra\n");
-//	printstack(infos_a, 'A');
+	counter = moves_to_head(infos_a, smallest);
+	while(counter != 0)
+	{
+		if(counter > 0)
+		{
+			rotate_stack(infos_a, "ra\n");
+			counter--;
+		}
+		else
+		{
+			reverse_rotate_stack(infos_a, "rra\n");
+			counter++;
+		}
+	}
 	return (0);
 }
 
@@ -160,11 +167,6 @@ int	algo_to_5(t_save *infos_a, t_save *infos_b, int size_stack)
 		return(algo_4(infos_a, infos_b));
 
 	if(size_stack == 5)
-	{
 		algo_5(infos_a, infos_b);
-		while (infos_a->head->index != 1)
-			rotate_stack(infos_a, "ra\n");
-		return (0);
-	}
 	return (0);
 }
