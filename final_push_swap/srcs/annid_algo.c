@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/21 18:34:35 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:51:53 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,37 +193,6 @@ int	double_ops_maths(t_node *current)
 	return (0);
 }
 
-// int	ft_magic_maths(t_node *current)
-// {
-
-
-// 	/*
-// 	int signe;
-// 	int	retour;
-
-// 	signe = 1;
-// 	retour = 0;
-// 	if (current->moves1 == 0 || current->moves2 == 0)
-// 		return (ft_abs(current->moves1 - current->moves2));
-// 	if ((current->moves1 > 0 && current->moves2 > 0) || (current->moves1 < 0 && current->moves2 < 0))
-// 	{
-// 		current->double_ops = ft_abs(current->moves1 - current->moves2);
-// 		if (current->moves1 < 0 && current->moves2 < 0)
-// 			current->double_ops = current->double_ops * (-1);
-// 		current->movef =  ft_abs(current->moves1) + ft_abs(current->moves2) -
-// 			ft_abs(current->double_ops);
-// 		return (0);
-// 	}
-// 	else
-// 	{
-// 		current->double_ops = 0;
-// 		current->movef = ft_abs(current->moves1) + ft_abs(current->moves2);
-// 		return (0);
-// 	}
-// 	*/
-// }
-
-
 int	double_operations(t_save *infos_a, t_save *infos_b, t_node *to_move)
 {
 	int	temp;
@@ -279,16 +248,12 @@ int	operation_to_b(t_save *infos, t_node *to_move)
 	if (to_move->moves2 == 0)
 		return (0);
 	counter = ft_abs(to_move->moves2) - ft_abs(to_move->double_ops);
-//	printf("COUNTER IN B == |%i|\n", counter);
-
-//	printf("MOVES2 IN B == |%i|\n", to_move->moves2);
 
 	while (counter != 0)
 	{
 		if (to_move->moves2 < 0)
 		{
 			reverse_rotate_stack(infos, "rrb\n");
-//			printf("COUNTER == |%i|\n", counter);
 			counter--;
 		}
 		if (to_move->moves2 > 0)
@@ -333,7 +298,6 @@ int check_biggest(t_save *infos_a, t_save *infos_b, int biggest_index)
 				i--;
 			}
 	}
-//	printstack(infos_a, 'A');
 	return (0);
 }
 
@@ -342,8 +306,6 @@ int	push_to_b(t_save *infos_a, t_save *infos_b, t_node *to_move)
 	double_operations(infos_a, infos_b, to_move);
 	operation_to_a(infos_a, to_move);
 	operation_to_b(infos_b, to_move);
-	// if (infos_b->head != NULL)
-//		printf("INFO_B : HEAD == |%i|\tTAIL == |%i|\n", infos_b->head->index, infos_b->tail->index);
 	push_stack(infos_a, infos_b, "pb\n");
 	return (0);
 }
