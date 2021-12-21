@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:34:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 12:27:39 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,29 +82,7 @@ int		list_add(t_save *infostack, char *str)
 	return(0);
 }
 
-int	free_list(t_save *infos)
-{
-	t_node	*temp;
 
-	if (infos->head == NULL || infos->tail == NULL)
-		return(ERROR);
-	temp = infos->head;
-	if (temp == infos->tail)
-	{
-		free (temp);
-		return(ERROR);
-	}
-	while (temp != infos->tail)// && temp->next != NULL && temp->next != temp)
-	{
-		//printf("1 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
-		temp = temp->next;
-		free(temp->prev);
-		//printf("2 ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
-	}
-	//printf("OUT ADDRESSE ET INDEX DU TRUC QUON FREE ==\n\t**|%p|\t|%i|\n\n", temp, temp->index);
-	free(temp);
-	return (ERROR);
-}
 
 
 int		list_setup_a(char **tab_split, t_save *infos_a)

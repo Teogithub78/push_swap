@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 18:43:14 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:28:48 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ int	main(int ac, char **av)
 	index_final(&list_a, i);
 	if (check_sorted(&list_a) == 0)
 	{
+		free_lists_error(&list_a, &list_b);
 		return (0);
 	}
 //	printstack(&list_a, 'A');

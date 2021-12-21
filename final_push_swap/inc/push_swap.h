@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/20 14:18:06 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 17:46:13 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 17:44:53 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,15 @@ int	index_final(t_save *infos_a, int size_chain);
 int	algo_to_5(t_save *infos_a, t_save *infos_b, int	size_stack);
 int		big_algo(t_save *infos_a, t_save *infos_b);
 t_node	*find_smallest(t_save *infos);
+int	ft_print_ERROR();
 int	ft_abs(int value);
 int	algo_big(t_save *infos_a, t_save *infos_b);
 int	algo_5(t_save *infos_a, t_save *infos_b);
 int	check_sorted(t_save *infos_a);
 int	algo_3(t_save *infos_a);
 int	printstack(t_save *infos, char c);
+char	*get_next_line(int fd);
+int	free_lists_error(t_save *infos_a, t_save *infos_b);
 
 # define ERROR -1
 # define OK 1

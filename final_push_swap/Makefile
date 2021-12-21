@@ -1,11 +1,18 @@
 NAME = push_swap
+NAME_B = checker
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-PATH_SRC = ./src/
+PATH_SRC = ./srcs/
 PATH_INC = ./inc/
-SRC = push_swap.c check_arg.c manage_arg.c list_init.c utils.c utils_algo.c operations.c algo_small.c annid_algo.c
-
+PATH_BONUS = ./bonus/
+SRC = srcs/push_swap.c srcs/check_arg.c srcs/manage_arg.c srcs/list_init.c srcs/utils.c srcs/utils_algo.c srcs/operations.c srcs/algo_small.c srcs/annid_algo.c \
+	srcs/error.c
+SRC_B = bonus/get_next_line.c bonus/get_next_line_utils.c bonus/checker.c bonus/error.c bonus/operations.c \
+bonus/checker_utils.c bonus/list_init.c manage_arg.c utils_algo.c
 OBJ = $(SRC:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
+
+
 
 FSANITIZE = -fsanitize=address
 
@@ -17,12 +24,12 @@ all : $(NAME)
 		$(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -Iinc $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) -I$(PATH_INC) $(OBJ) -o $(NAME)
 
-fs : $(OBJ)
-	$(CC) $(CFLAGS) $(FSANITIZE) -I$(PATH_INC) -c $< -o $@
+bonus : $(NAME_B)
 
-# gcc push_swap.c check_arg.c manage_arg.c list_init.c utils.c utils_algo.c operations.c algo_small.c annid_algo.c
+$(NAME_B): $(OBJ_B)
+	$(CC) $(CFLAGS) -I$(PATH_INC) $(OBJ_B) -o $(NAME_B)
 
 clean :
 		rm -f $(OBJ)

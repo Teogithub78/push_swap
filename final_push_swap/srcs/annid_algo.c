@@ -6,22 +6,11 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 19:01:42 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:34:35 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-1. Compter moves_to_head pour chaque nodes
-2. Compter moves_in_b pour chaque nodes
-	a. Trouver biggest;
-	b. crer avec biggest;
-	c. Trouver smaller en amont de la chaine;
-	d.
-3.
-
-*/
 
 t_node	*find_least_op(t_save *infos)
 {
@@ -413,6 +402,8 @@ int	algo_big(t_save *infos_a, t_save *infos_b)
 //		ft_putstr("PUSH TO B HERE\n");
 	}
 	push_to_a(infos_b, infos_a);
+	if (infos_a->tail->index == 1)
+		reverse_rotate_stack(infos_a, "rra\n");
 
 	return (0);
 }
