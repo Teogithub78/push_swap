@@ -81,12 +81,37 @@ int	algo_4(t_save *infos_a, t_save *infos_b)
 	return (0);
 }
 
+
+int	find_best_spot_increasing(t_save *infos_b, t_node *current)
+{
+	t_node *temp;
+	int	counter;
+
+	counter = 0;
+	temp = infos_b->head;
+	while (current->index < temp->index && current->index < temp->prev->index)
+	{
+		counter--;
+		temp = temp->prev;
+	}
+	while (current->index > temp->index)
+	{
+		counter++;
+		temp = temp->next;
+	}
+	if (counter > (infos_b->size / 2))
+		return (counter - infos_b->size);
+	else
+		return (counter);
+}
+
 int	algo_5_next(t_save *infos_a, t_save *infos_b, int smallest, int biggest)
 {
 	int	i;
+	int	counter;
 
 	i = 2;
-
+	counter = 0;
 	if (infos_b->head->index == smallest || infos_b->head->next->index == smallest)
 	{
 		if (infos_b->head->next->index == smallest)
@@ -108,13 +133,26 @@ int	algo_5_next(t_save *infos_a, t_save *infos_b, int smallest, int biggest)
 	{
 		if (i == 2 && infos_b->head->index > infos_b->head->next->index)
 			swap_stack(infos_b, "sb\n");
-		while(infos_b->head->index > infos_a->head->index)
-			rotate_stack(infos_a, "ra\n");
+		counter = find_best_spot_increasing(infos_a, infos_b->head);
+		while(counter != 0)
+		{
+			if (counter > 0)
+			{
+				rotate_stack(infos_a, "ra\n");
+				counter--;
+			}
+			else
+			{
+				reverse_rotate_stack(infos_a, "rra\n");
+				counter++;
+			}
+		}
 		push_stack(infos_b, infos_a, "pa\n");
 		i--;
 	}
 	return(0);
 }
+
 
 int	algo_5(t_save *infos_a, t_save *infos_b)
 {
