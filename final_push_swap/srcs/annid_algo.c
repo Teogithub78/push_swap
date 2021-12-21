@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:32:39 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/21 18:51:53 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:10:09 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,23 +265,10 @@ int	operation_to_b(t_save *infos, t_node *to_move)
 	return (0);
 }
 
-int check_biggest(t_save *infos_a, t_save *infos_b, int biggest_index)
+int	sort_check_biggest(t_save *infos_a, t_save *infos_b, int i)
 {
-	int	i;
-	t_node *current;
-
-	i = 0;
-	current = infos_a->head;
-	while(current)
-	{
-		if (current->index > biggest_index)
-			i++;
-		current = current->next;
-		if (current == infos_a->head)
-			break;
-	}
 	if (i == 0 || i == 5)
-		return (algo_5(infos_a,infos_b));
+		return (algo_5(infos_a, infos_b));
 	else
 	{
 		algo_5(infos_a, infos_b);
@@ -298,6 +285,25 @@ int check_biggest(t_save *infos_a, t_save *infos_b, int biggest_index)
 				i--;
 			}
 	}
+	return (0);
+}
+
+int check_biggest(t_save *infos_a, t_save *infos_b, int biggest_index)
+{
+	int	i;
+	t_node *current;
+
+	i = 0;
+	current = infos_a->head;
+	while(current)
+	{
+		if (current->index > biggest_index)
+			i++;
+		current = current->next;
+		if (current == infos_a->head)
+			break;
+	}
+	sort_check_biggest(infos_a, infos_b, i);
 	return (0);
 }
 
@@ -350,18 +356,12 @@ int	algo_big(t_save *infos_a, t_save *infos_b)
 			current->moves1 = moves_to_head(infos_a, current);
 			current->moves2 = moves_in_b(infos_b, current);
 			double_ops_maths(current);
-//			printf("\nCURRENT INFOS :\tindex = |%i|, m1 = |%i|, m2 = %i, mf = %i\n", current->index, current->moves1,
-//		current->moves2, current->movef);
 			current = current->next;
 			if (current == infos_a->head)
 				break;
 		}
-//		printstack(infos_a, 'A');
 		current = find_least_op(infos_a);
-//		printf("\nTO MOVE INFOS :\tindex = |%i|, m1 = |%i|, m2 = %i, mf = %i\n", current->index, current->moves1,
-//		current->moves2, current->movef);
 		push_to_b(infos_a, infos_b, current);
-//		ft_putstr("PUSH TO B HERE\n");
 	}
 	push_to_a(infos_b, infos_a);
 	if (infos_a->tail->index == 1)

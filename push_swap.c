@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:09:20 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 18:21:23 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:05:01 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,59 @@ int	printstacks(t_save *infos_a, t_save *infos_b)
 			break;
 	}
 	printf("\n");
+	return (0);
+}
+
+int	printstack(t_save *infos, char c)
+{
+	int i;
+	t_node *stack;
+
+	i = 0;
+	stack = infos->head;
+	printf("INFOSTACK HEAD\t=\t|%p|\n", infos->head);
+	printf("INFOSTACK TAIL\t=\t|%p|\n", infos->tail);
+
+	printf("\t ***************\n");
+	printf("\t *** STACK %c ***\n", c);
+	printf("\t ***************\n");
+	printf("PROUT\n");
+	if (stack == NULL)
+	{
+	//printf("INDEX \t=\t|%i|\n", stack->index);
+	//printf("VALUE \t= \t|%i|\n", stack->val);
+	//ft_putstr("ICI ???\n");
+//	printf("ADDRESSE NEXT \t=\t|%p|\n", stack->next);
+//	printf("ADDRESSE PREV \t=\t|%p|\n", stack->prev);
+	}
+	/*
+	while (stack != NULL)
+	{
+		i++;
+		printf("INDEX \t=\t|%i|\n", stack->index);
+		printf("VALUE \t= \t|%i|\n", stack->val);
+		printf("ADDRESSE STACK \t=\t|%p|\n", stack);
+		printf("ADDRESSE NEXT \t=\t|%p|\n", stack->next);
+		printf("ADDRESSE PREV \t=\t|%p|\n", stack->prev);
+		stack = stack->next;
+		if (stack == NULL || stack == infos->head)
+			break;
+	}
+	*/
+	while (stack != NULL)
+	{
+		i++;
+		printf("INDEX \t=\t|%i|\n", stack->index);
+//		printf("VALUE \t= \t|%i|\n", stack->val);
+//		printf("VALEUR M1 \t=\t|%i|\n", stack->moves1);
+//		printf("VALEUR M2 \t=\t|%i|\n", stack->moves2);
+//		printf("VALEUR MF \t=\t|%i|\n", stack->movef);
+		stack = stack->next;
+		if (stack == NULL || stack == infos->head)
+			break;
+	}
+	printf("\n");
+
 	return (0);
 }
 

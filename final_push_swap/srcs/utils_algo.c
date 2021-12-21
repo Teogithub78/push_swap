@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 13:54:25 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/21 17:32:49 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:11:48 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,25 +88,5 @@ int	index_final(t_save *infos_a, int size_chain)
 			temp_addr = stack_a;
 		}
 	}
-	return (0);
-}
-
-int	check_sorted(t_save *infos_a)
-{
-	int i;
-	t_node *current;
-
-	current = infos_a->head;
-	i = 1;
-
-	while (current != infos_a->tail)
-	{
-		if (i != current->index)
-			return (ERROR);
-		i++;
-		current = current->next;
-	}
-	if (i != current->index)
-		return (ERROR);
 	return (0);
 }

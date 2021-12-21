@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 12:28:32 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/11 16:56:35 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:14:32 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		check_signs(char *str)
 		}
 		i++;
 	}
-	//ft_putstr("SIGNS INNONCENT !!");
 	return(1);
 }
 
@@ -76,7 +75,6 @@ int		check_chars(char *str)
 		}
 		i++;
 	}
-	//ft_putstr("CHAR INNOCENT !!");
 
 	return (1);
 }
@@ -86,11 +84,8 @@ int		check_arg(int ac, char **av)
 	int	i;
 
 	i = 1;
-	//ft_putstr("P | R | O | U | T\n");
-	//printf("CHECK_ARG : \tI = |%i|", i);
 	while (i < ac)
 	{
-	//	printf("CHECK_ARG : \tI = |%i|", i);
 		if (check_chars(av[i]) < 0 || check_signs(av[i]) < 0 || check_size(av[i]) < 0)
 		{
 			return (ERROR);
@@ -98,4 +93,24 @@ int		check_arg(int ac, char **av)
 		i++;
 	}
 	return (1);
+}
+
+int	check_sorted(t_save *infos_a)
+{
+	int i;
+	t_node *current;
+
+	current = infos_a->head;
+	i = 1;
+
+	while (current != infos_a->tail)
+	{
+		if (i != current->index)
+			return (ERROR);
+		i++;
+		current = current->next;
+	}
+	if (i != current->index)
+		return (ERROR);
+	return (0);
 }

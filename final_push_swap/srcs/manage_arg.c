@@ -6,7 +6,7 @@
 /*   By: tthibaut <tthibaut@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:14:40 by tthibaut          #+#    #+#             */
-/*   Updated: 2021/12/20 17:12:52 by tthibaut         ###   ########.fr       */
+/*   Updated: 2021/12/21 19:20:39 by tthibaut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,10 @@ int	ft_atoi_plus(t_node *list, char *str)
 	retour = 0;
 	signe = 1;
 	if(str[i] == '+' || str[i] == '-')
-	{
+	//{
 		if (str[i++] == '-')
 			signe = signe * (-1);
-	}
-
+	//}
 	while(str[i])
 	{
 		retour += str[i++] - 48;
